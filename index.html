@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>黃王府囍宴 | 凱銘 & 詠萱</title>
+    <title id="page-title">黃王府囍宴 | 凱銘 & 詠萱</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 頂級玫瑰珊瑚紅 (紅偏粉) 與 燙金配色 --- */
         :root {
             --pink-bg: #FFF5F7;        
             --env-body: #D82B4B;       
@@ -30,7 +29,6 @@
             padding: 0;
             font-family: 'Noto Sans TC', 'Helvetica Neue', Arial, sans-serif;
             background-color: var(--pink-bg);
-            /* 🌸 滿版唯美插圖背景 */
             background-image: 
                 linear-gradient(rgba(255, 245, 247, 0.85), rgba(255, 245, 247, 0.95)),
                 url('HSuue.jpg');
@@ -43,12 +41,67 @@
             overflow-x: hidden;
         }
 
+        .lang-switcher {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 10000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 5px 15px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.2);
+            border: 2px solid var(--gold-light);
+            display: flex;
+            align-items: center;
+        }
+        .lang-switcher select {
+            border: none;
+            background: transparent;
+            font-size: 0.95rem;
+            color: var(--magenta-dark);
+            font-weight: 900;
+            outline: none;
+            cursor: pointer;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 999;
+            background: var(--gold-gradient);
+            color: var(--magenta-dark);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            border: 2px solid #FFF8DC;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
+        
         .calligraphy-font {
             font-family: 'Kaiti TC', 'BiauKai', 'DFKai-SB', 'STKaiti', 'AR PL UKai TW', serif;
             font-weight: bold;
         }
 
-        /* 活潑漸層文字與動畫 */
         .gradient-title {
             background: linear-gradient(135deg, #D81B60, #FF708C, #D4AF37, #D81B60);
             background-size: 300% 300%;
@@ -63,7 +116,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 愛心跳動動畫 */
         .heart-beat {
             display: inline-block;
             color: #E63956;
@@ -78,9 +130,6 @@
             70% { transform: scale(1); }
         }
 
-        /* =========================================
-           3D 質感信封
-           ========================================= */
         #envelope-wrapper {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle, #fff0f3 0%, #ffd1dc 100%);
@@ -157,7 +206,6 @@
         #confetti-container { position: absolute; top: 140px; left: 50%; width: 1px; height: 1px; z-index: 6; pointer-events: none; }
         .confetti-xi { position: absolute; font-family: 'Noto Serif TC', serif; font-weight: bold; user-select: none; opacity: 0; }
 
-        /* 愛心飄落特效 */
         #falling-hearts-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; overflow: hidden; }
         .falling-heart {
             position: absolute; top: -10vh;
@@ -168,7 +216,6 @@
         @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(110vh) rotate(180deg); opacity: 0; } }
         @keyframes sway { 0% { margin-left: -25px; } 100% { margin-left: 25px; } }
 
-        /* 主視覺 */
         .hero {
             position: relative; padding: 80px 20px 50px 20px; border: 4px solid var(--white-card); border-radius: 40px;
             margin: 20px; background-color: rgba(255, 255, 255, 0.85); box-shadow: 0 10px 30px rgba(216, 27, 96, 0.08); backdrop-filter: blur(5px);
@@ -183,7 +230,6 @@
         .time-box span { display: block; font-size: 2rem; font-weight: 900; color: var(--magenta-primary); }
         .time-box small { font-size: 0.9rem; color: #888; font-weight: bold; }
 
-        /* HKG ✈ KNH */
         .story-illustration { margin: 30px auto 10px auto; max-width: 100%; display: inline-block; }
         .flight-path {
             font-size: 2.2rem; font-weight: 900; letter-spacing: 8px; font-family: 'Noto Sans TC', sans-serif;
@@ -192,7 +238,6 @@
             filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.8)); white-space: nowrap; 
         }
 
-        /* 婚紗照 Carousel */
         .gallery-section { padding: 30px 0; }
         .gallery-section h2 { font-size: 1.8rem; font-weight: 900; color: var(--magenta-primary); letter-spacing: 4px; margin-bottom: 10px; }
         .scroll-hint { font-size: 0.9rem; color: var(--magenta-dark); letter-spacing: 2px; opacity: 0.7; margin-bottom: 20px; animation: pulse 2.5s infinite; }
@@ -211,7 +256,6 @@
         .polaroid img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
         .polaroid.show-full img { object-fit: contain; background-color: var(--white-card); }
 
-        /* 內容區 */
         .content-section {
             background-color: rgba(255, 255, 255, 0.95); color: var(--magenta-dark); padding: 50px 20px;
             margin: 20px; border-radius: 30px; border: 4px solid var(--white-card); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
@@ -222,7 +266,6 @@
         .cal-day-header { font-weight: 900; color: var(--gold-primary); }
         .cal-date { padding: 5px 0; font-weight: bold; }
         
-        /* 🌟 日曆 1 號呼吸跳動動畫 */
         .cal-highlight { 
             background-color: var(--magenta-primary); 
             color: white; 
@@ -247,9 +290,6 @@
         }
         .calendar-btn:hover { background-color: var(--gold-primary); color: var(--white-card); }
 
-        /* =========================================
-           內嵌精美表單樣式
-           ========================================= */
         .wedding-form {
             background-color: var(--white-card); color: var(--magenta-dark); max-width: 650px; margin: 40px auto 10px auto;
             padding: 40px 25px; border-radius: 20px; border: 2px solid var(--gold-light); text-align: left;
@@ -284,7 +324,6 @@
         }
         .success-box p { font-size: 1rem; color: #666; font-weight: normal; margin-top: 10px; line-height: 1.6; }
 
-        /* 🌟 頁尾灰字設定 */
         .footer-text {
             text-align: center; color: #888; font-size: 1rem; margin: 30px 0 10px 0;
             letter-spacing: 3px; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: bold;
@@ -301,19 +340,28 @@
 </head>
 <body>
 
+    <div class="lang-switcher">
+        <select id="langSelect" onchange="changeLanguage(this.value)">
+            <option value="zh-TW" selected>🇭🇰🇹🇼繁體中文</option>
+            <option value="ja">🇯🇵日本語</option>
+            <option value="en">🇺🇸English</option>
+        </select>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTopBtn" onclick="scrollToTop(event)">Top</a>
+
     <div id="falling-hearts-container"></div>
 
-    <!-- 3D 質感紙紋燙金信封 -->
     <div id="envelope-wrapper">
         <div class="envelope-container">
             <div class="envelope-body"></div>
             <div class="envelope-letter" id="envelope-letter">
                 <div class="card-inner" id="card-inner">
-                    <div class="card-front"><img src="letter-illustration.png" alt="金門香港跨海之戀插畫"></div>
+                    <div class="card-front"><img src="letter-illustration.png" alt="Illustration" loading="lazy" decoding="async"></div>
                     <div class="card-back">
                         <div class="cute-xi">囍</div>
-                        <div class="title calligraphy-font gradient-title">黃王府囍宴</div>
-                        <div class="names calligraphy-font">凱銘 <span class="heart-beat">♥</span> 詠萱</div>
+                        <div class="title calligraphy-font gradient-title" data-i18n="env_title">黃王府囍宴</div>
+                        <div class="names calligraphy-font" data-i18n="env_names">凱銘 <span class="heart-beat">♥</span> 詠萱</div>
                     </div>
                 </div>
             </div>
@@ -366,23 +414,22 @@
             <div id="confetti-container"></div>
             <div class="envelope-seal" id="envelope-seal" onclick="openEnvelope()">囍</div>
         </div>
-        <div class="envelope-hint" id="envelope-hint">點擊封蠟章開啟喜帖</div>
+        <div class="envelope-hint" id="envelope-hint" data-i18n="env_hint">點擊封蠟章開啟喜帖</div>
     </div>
 
-    <!-- 喜帖主視覺 -->
     <header class="hero">
         <div class="hero-content">
-            <div class="hero-title calligraphy-font gradient-title">黃 王 府 囍 宴</div>
+            <div class="hero-title calligraphy-font gradient-title" data-i18n="hero_title">黃 王 府 囍 宴</div>
             <div class="subtitle-eng">WE ARE GETTING MARRIED</div>
-            <h1 class="calligraphy-font">凱銘<br><span class="heart-beat">♥</span><br>詠萱</h1>
+            <h1 class="calligraphy-font" data-i18n="hero_names">凱銘<br><span class="heart-beat">♥</span><br>詠萱</h1>
             <div class="date">
-                國曆 116 年 1 月 1 日 (五)<br>
-                <span style="font-size: 1.1rem; color: var(--magenta-primary);">農曆 丙午年 十一月廿四</span>
+                <span data-i18n="hero_date_solar">國曆 116 年 1 月 1 日 (五)</span><br>
+                <span style="font-size: 1.1rem; color: var(--magenta-primary);" data-i18n="hero_date_lunar">農曆 丙午年 十一月廿四</span>
             </div>
             <div class="countdown" id="countdown">
-                <div class="time-box"><span id="days">0</span><small>天</small></div>
-                <div class="time-box"><span id="hours">0</span><small>時</small></div>
-                <div class="time-box"><span id="minutes">0</span><small>分</small></div>
+                <div class="time-box"><span id="days">0</span><small data-i18n="time_days">天</small></div>
+                <div class="time-box"><span id="hours">0</span><small data-i18n="time_hours">時</small></div>
+                <div class="time-box"><span id="minutes">0</span><small data-i18n="time_mins">分</small></div>
             </div>
             <div class="story-illustration"><div class="flight-path">HKG ✈ KNH</div></div>
         </div>
@@ -390,22 +437,21 @@
 
     <!-- 照片展示牆 -->
     <div class="gallery-section">
-        <h2>相愛拾光</h2>
-        <div class="scroll-hint">← 左右滑動翻閱 →</div>
+        <h2 data-i18n="gallery_title">相愛拾光</h2>
+        <div class="scroll-hint" data-i18n="gallery_hint">← 左右滑動翻閱 →</div>
         <div class="carousel-wrapper">
-            <div class="carousel-item"><div class="polaroid show-full"><img src="wedding-photo-1.jpg" alt="婚紗照1"></div></div>
-            <div class="carousel-item"><div class="polaroid"><img src="wedding-photo-2.jpg" alt="婚紗照2"></div></div>
-            <div class="carousel-item"><div class="polaroid"><img src="wedding-photo-3.jpg" alt="婚紗照3"></div></div>
-            <div class="carousel-item"><div class="polaroid"><img src="wedding-photo-4.jpg" alt="婚紗照4"></div></div>
+            <div class="carousel-item"><div class="polaroid show-full"><img src="wedding-photo-1.jpg" alt="Photo 1" loading="lazy" decoding="async"></div></div>
+            <div class="carousel-item"><div class="polaroid"><img src="wedding-photo-2.jpg" alt="Photo 2" loading="lazy" decoding="async"></div></div>
+            <div class="carousel-item"><div class="polaroid"><img src="wedding-photo-3.jpg" alt="Photo 3" loading="lazy" decoding="async"></div></div>
+            <div class="carousel-item"><div class="polaroid"><img src="wedding-photo-4.jpg" alt="Photo 4" loading="lazy" decoding="async"></div></div>
         </div>
     </div>
 
-    <!-- 內容與表單 -->
     <section class="content-section">
         <div class="calendar-box">
-            <div class="cal-month">2027 年 1 月</div>
+            <div class="cal-month" data-i18n="cal_month">2027 年 1 月</div>
             <div class="cal-grid">
-                <div class="cal-day-header">日</div><div class="cal-day-header">一</div><div class="cal-day-header">二</div><div class="cal-day-header">三</div><div class="cal-day-header">四</div><div class="cal-day-header">五</div><div class="cal-day-header">六</div>
+                <div class="cal-day-header" data-i18n="cal_sun">日</div><div class="cal-day-header" data-i18n="cal_mon">一</div><div class="cal-day-header" data-i18n="cal_tue">二</div><div class="cal-day-header" data-i18n="cal_wed">三</div><div class="cal-day-header" data-i18n="cal_thu">四</div><div class="cal-day-header" data-i18n="cal_fri">五</div><div class="cal-day-header" data-i18n="cal_sat">六</div>
                 <div></div><div></div><div></div><div></div><div></div>
                 <div class="cal-date cal-highlight">1</div>
                 <div class="cal-date">2</div><div class="cal-date">3</div><div class="cal-date">4</div><div class="cal-date">5</div><div class="cal-date">6</div><div class="cal-date">7</div><div class="cal-date">8</div>
@@ -413,14 +459,14 @@
         </div>
 
         <div class="info-card">
-            <p style="margin-bottom: 5px;"><strong>【 喜 結 良 緣 】</strong></p>
-            <p style="margin: 0;">新郎：黃凱銘<br>新娘：王詠萱</p>
+            <p style="margin-bottom: 5px;"><strong data-i18n="info_couple_title">【 喜 結 良 緣 】</strong></p>
+            <p style="margin: 0;" data-i18n="info_couple">新郎：黃凱銘<br>新娘：王詠萱</p>
             <hr class="info-divider">
-            <p style="margin-bottom: 5px;"><strong>【 主 婚 人 】</strong></p>
-            <p style="margin: 0;">男方：黃偉強、馮莉梅<br>女方：王金山、盛惠寶</p>
+            <p style="margin-bottom: 5px;"><strong data-i18n="info_host_title">【 主 婚 人 】</strong></p>
+            <p style="margin: 0;" data-i18n="info_host">男方：黃偉強、馮莉梅<br>女方：王金山、盛惠寶</p>
             <hr class="info-divider">
-            <p style="margin-bottom: 5px;"><strong>【 婚 宴 資 訊 】</strong></p>
-            <p style="margin: 0;">
+            <p style="margin-bottom: 5px;"><strong data-i18n="info_banquet_title">【 婚 宴 資 訊 】</strong></p>
+            <p style="margin: 0;" data-i18n="info_banquet_date">
                 國曆：2027 年 1 月 1 日 (五)<br>
                 農曆：丙午年 十一月廿四<br>
                 11:30 迎賓入席 / 12:30 準時開席<br><br>
@@ -428,130 +474,280 @@
             </p>
             
             <hr class="info-divider">
-            <p style="margin-bottom: 5px;"><strong>【 交 通 資 訊 】</strong></p>
-            <p style="margin: 0; font-size: 1rem; line-height: 1.8;">
+            <p style="margin-bottom: 5px;"><strong data-i18n="info_traffic_title">【 交 通 資 訊 】</strong></p>
+            <p style="margin: 0; font-size: 1rem; line-height: 1.8;" data-i18n="info_traffic">
                 🚇 捷運劍南路站 3 號出口步行<br>
                 🚗 飯店備有地下停車場，賓客享免費停車 6 小時
             </p>
         </div>
 
-        <!-- 🌟 已統一無 Emoji、白色底色的按鈕列 -->
         <div class="btn-group">
-            <a href="https://grandvictoria.com.tw/%e4%ba%a4%e9%80%9a%e4%bd%8d%e7%bd%ae/" target="_blank" class="calendar-btn">官網交通與停車指南</a>
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E9%BB%83%E7%8E%8B%E5%BA%9C%E5%96%9C%E5%AE%B4-%E5%87%B1%E9%8A%98%E8%88%87%E8%A9%A0%E8%90%B1%E5%A9%9A%E7%A6%AE&dates=20270101T033000Z/20270101T073000Z&details=%E8%AA%A0%E6%91%AF%E9%82%80%E8%AB%8B%E6%82%A8%E8%88%87%E6%88%91%E5%80%91%E4%B8%80%E5%90%8C%E8%A6%8B%E8%AD%89%E9%80%99%E4%BB%BD%E5%96%9C%E6%82%85%E3%80%82&location=%E7%B6%AD%E5%A4%9A%E9%BA%97%E4%BA%9E%E9%85%92%E5%BA%97" target="_blank" class="calendar-btn">加入 Google 行事曆</a>
-            <button onclick="downloadICS()" class="calendar-btn" style="font-family: inherit;">下載 Apple 行事曆</button>
+            <a href="https://grandvictoria.com.tw/%e4%ba%a4%e9%80%9a%e4%bd%8d%e7%bd%ae/" target="_blank" class="calendar-btn" data-i18n="btn_traffic">官網交通與停車指南</a>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E9%BB%83%E7%8E%8B%E5%BA%9C%E5%96%9C%E5%AE%B4-%E5%87%B1%E9%8A%98%E8%88%87%E8%A9%A0%E8%90%B1%E5%A9%9A%E7%A6%AE&dates=20270101T033000Z/20270101T073000Z&details=%E8%AA%A0%E6%91%AF%E9%82%80%E8%AB%8B%E6%82%A8%E8%88%87%E6%88%91%E5%80%91%E4%B8%80%E5%90%8C%E8%A6%8B%E8%AD%89%E9%80%99%E4%BB%BD%E5%96%9C%E6%82%85%E3%80%82&location=%E7%B6%AD%E5%A4%9A%E9%BA%97%E4%BA%9E%E9%85%92%E5%BA%97" target="_blank" class="calendar-btn" data-i18n="btn_gcal">加入 Google 行事曆</a>
+            <button onclick="downloadICS()" class="calendar-btn" style="font-family: inherit;" data-i18n="btn_acal">下載 Apple 行事曆</button>
         </div>
 
-        <!-- 🚀 結合最新欄位的無縫線上回覆表單 -->
         <div class="wedding-form" id="formWrapper">
-            <h3>出席意願調查</h3>
-            <div class="form-desc">
+            <h3 data-i18n="form_title">出席意願調查</h3>
+            <div class="form-desc" data-i18n="form_desc">
                 懇請您於 <strong>115 年 11 月 25 日前</strong> 完成回覆<br>
                 以利我們安排座位，期待與您一同分享這份喜悅！
             </div>
 
             <form id="rsvpForm">
                 <div class="form-group">
-                    <label>賓客姓名 <span>*</span></label>
-                    <input type="text" id="guestName" required placeholder="請輸入您的姓名">
+                    <label data-i18n="lbl_name">賓客姓名 <span>*</span></label>
+                    <input type="text" id="guestName" required data-i18n-placeholder="ph_name" placeholder="請輸入您的姓名">
                 </div>
 
                 <div class="form-group">
-                    <label>聯絡方式 <span>*</span></label>
-                    <input type="text" id="contactInfo" required placeholder="電話 / Line ID / Email">
+                    <label data-i18n="lbl_contact">聯絡方式 <span>*</span></label>
+                    <input type="text" id="contactInfo" required data-i18n-placeholder="ph_contact" placeholder="電話 / Line ID / Email">
                 </div>
 
                 <div class="form-group">
-                    <label>出席狀況 <span>*</span></label>
+                    <label data-i18n="lbl_attend">出席狀況 <span>*</span></label>
                     <div class="radio-group">
                         <label class="radio-label">
-                            <input type="radio" name="attend" value="yes" required> 確定出席（期待與您相見！）
+                            <input type="radio" name="attend" value="yes" required> <span data-i18n="opt_attend_yes">確定出席（期待與您相見！）</span>
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="attend" value="no"> 不克出席（心意收到，獻上祝福）
+                            <input type="radio" name="attend" value="no"> <span data-i18n="opt_attend_no">不克出席（心意收到，獻上祝福）</span>
                         </label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>出席總人數（含您自己）</label>
+                    <label data-i18n="lbl_count">出席總人數（含您自己）</label>
                     <select id="guestCount">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
-                        <option value="5人以上">5人以上</option>
+                        <option value="5人以上" data-i18n="opt_over_5">5人以上</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>素食份數（葷食免填）</label>
+                    <label data-i18n="lbl_veg">素食份數（葷食免填）</label>
                     <select id="vegCount">
-                        <option value="">無</option>
-                        <option value="1份">1份</option>
-                        <option value="2份">2份</option>
+                        <option value="" data-i18n="opt_none">無</option>
+                        <option value="1份" data-i18n="opt_1_portion">1份</option>
+                        <option value="2份" data-i18n="opt_2_portion">2份</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>嬰兒椅張數（無孩童免填）</label>
+                    <label data-i18n="lbl_chair">嬰兒椅張數（無孩童免填）</label>
                     <select id="babyChair">
-                        <option value="">無</option>
-                        <option value="1張">1張</option>
-                        <option value="2張">2張</option>
+                        <option value="" data-i18n="opt_none">無</option>
+                        <option value="1張" data-i18n="opt_1_chair">1張</option>
+                        <option value="2張" data-i18n="opt_2_chair">2張</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label class="checkbox-label">
                         <input type="checkbox" id="kinmenCheck" value="1">
-                        金門文定儀式（115/10/11 泗湖55號）— 敬邀觀禮
+                        <span data-i18n="opt_kinmen">金門文定儀式（115/10/11 泗湖55號）— 敬邀觀禮</span>
                     </label>
                 </div>
 
                 <div class="form-group">
-                    <label>領取喜餅的方式</label>
+                    <label data-i18n="lbl_cake">領取喜餅的方式</label>
                     <select id="cakeOption">
-                        <option value="">請選擇</option>
-                        <option value="台北結婚喜宴現場領取">台北結婚喜宴現場領取</option>
-                        <option value="金門訂婚現場領取">金門訂婚現場領取</option>
-                        <option value="郵寄到府">郵寄到府</option>
-                        <option value="預約新娘本人領取">預約新娘本人領取</option>
-                        <option value="我是男方親友，無須領取">我是男方親友，無須領取</option>
+                        <option value="" data-i18n="opt_select">請選擇</option>
+                        <option value="台北結婚喜宴現場領取" data-i18n="opt_cake_1">台北結婚喜宴現場領取</option>
+                        <option value="金門訂婚現場領取" data-i18n="opt_cake_2">金門訂婚現場領取</option>
+                        <option value="郵寄到府" data-i18n="opt_cake_3">郵寄到府</option>
+                        <option value="預約新娘本人領取" data-i18n="opt_cake_4">預約新娘本人領取</option>
+                        <option value="我是男方親友，無須領取" data-i18n="opt_cake_5">我是男方親友，無須領取</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>收件地址（選郵寄時請填）</label>
-                    <textarea id="shippingAddress" rows="2" placeholder="郵遞區號、地址、收件人、電話"></textarea>
+                    <label data-i18n="lbl_addr">收件地址（選郵寄時請填）</label>
+                    <textarea id="shippingAddress" rows="2" data-i18n-placeholder="ph_addr" placeholder="郵遞區號、地址、收件人、電話"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label>其他需求（選填）</label>
-                    <input type="text" id="otherNeed" placeholder="如果有其他需要協助的地方，請告訴我們">
+                    <label data-i18n="lbl_other">其他需求（選填）</label>
+                    <input type="text" id="otherNeed" data-i18n-placeholder="ph_other" placeholder="如果有其他需要協助的地方，請告訴我們">
                 </div>
 
                 <div class="form-group">
-                    <label>給新郎新娘的祝福留言</label>
-                    <textarea id="wishesMsg" rows="3" placeholder="寫下您的祝福..."></textarea>
+                    <label data-i18n="lbl_msg">給新郎新娘的祝福留言</label>
+                    <textarea id="wishesMsg" rows="3" data-i18n-placeholder="ph_msg" placeholder="寫下您的祝福..."></textarea>
                 </div>
 
-                <button type="submit" class="submit-btn" id="submitBtn">囍 送出回覆</button>
+                <button type="submit" class="submit-btn" id="submitBtn" data-i18n="btn_submit">囍 送出回覆</button>
             </form>
         </div>
 
-        <div id="successBox" class="success-box">
+        <div id="successBox" class="success-box" data-i18n="success_msg">
             ✨ 感謝您的回覆 ✨
             <p>我們已收到您的出席意願，<br>期待與您一同歡慶這個特別的日子！</p>
         </div>
 
-        <!-- 🌟 底部優雅灰字 -->
-        <div class="footer-text">With love · 誠摯邀請</div>
+        <div class="footer-text" data-i18n="footer">With love · 誠摯邀請</div>
 
     </section>
 
+    <div style="text-align: center; color: #888; font-size: 0.85rem; padding: 20px 0; font-family: 'Helvetica Neue', Arial, sans-serif;">
+        ©2026 Helios Studios All rights reserved.
+    </div>
+    
     <script>
-        // 背景愛心特效
+        const i18n = {
+            "zh-TW": {
+                "title": "黃王府囍宴 | 凱銘 & 詠萱",
+                "env_title": "黃王府囍宴",
+                "env_names": "凱銘 <span class='heart-beat'>♥</span> 詠萱",
+                "env_hint": "點擊封蠟章開啟喜帖",
+                "hero_title": "黃 王 府 囍 宴",
+                "hero_names": "凱銘<br><span class='heart-beat'>♥</span><br>詠萱",
+                "hero_date_solar": "國曆 116 年 1 月 1 日 (五)",
+                "hero_date_lunar": "農曆 丙午年 十一月廿四",
+                "time_days": "天", "time_hours": "時", "time_mins": "分",
+                "wedding_started": "婚禮進行中！",
+                "gallery_title": "相愛拾光",
+                "gallery_hint": "← 左右滑動翻閱 →",
+                "cal_month": "2027 年 1 月",
+                "cal_sun": "日", "cal_mon": "一", "cal_tue": "二", "cal_wed": "三", "cal_thu": "四", "cal_fri": "五", "cal_sat": "六",
+                "info_couple_title": "【 喜 結 良 緣 】",
+                "info_couple": "新郎：黃凱銘<br>新娘：王詠萱",
+                "info_host_title": "【 主 婚 人 】",
+                "info_host": "男方：黃偉強、馮莉梅<br>女方：王金山、盛惠寶",
+                "info_banquet_title": "【 婚 宴 資 訊 】",
+                "info_banquet_date": "國曆：2027 年 1 月 1 日 (五)<br>農曆：丙午年 十一月廿四<br>11:30 迎賓入席 / 12:30 準時開席<br><br><strong>維多麗亞酒店 Grand Victoria Hotel</strong><br>台北市中山區敬業四路168號",
+                "info_traffic_title": "【 交 通 資 訊 】",
+                "info_traffic": "🚇 捷運劍南路站 3 號出口步行<br>🚗 飯店備有地下停車場，賓客享免費停車 6 小時",
+                "btn_traffic": "官網交通與停車指南", "btn_gcal": "加入 Google 行事曆", "btn_acal": "下載 Apple 行事曆",
+                "form_title": "出席意願調查",
+                "form_desc": "懇請您於 <strong>115 年 11 月 25 日前</strong> 完成回覆<br>以利我們安排座位，期待與您一同分享這份喜悅！",
+                "lbl_name": "賓客姓名 <span>*</span>", "lbl_contact": "聯絡方式 <span>*</span>", "lbl_attend": "出席狀況 <span>*</span>",
+                "opt_attend_yes": "確定出席（期待與您相見！）", "opt_attend_no": "不克出席（心意收到，獻上祝福）",
+                "lbl_count": "出席總人數（含您自己）", "lbl_veg": "素食份數（葷食免填）", "lbl_chair": "嬰兒椅張數（無孩童免填）",
+                "opt_kinmen": "金門文定儀式（115/10/11 泗湖55號）— 敬邀觀禮",
+                "lbl_cake": "領取喜餅的方式", "lbl_addr": "收件地址（選郵寄時請填）", "lbl_other": "其他需求（選填）", "lbl_msg": "給新郎新娘的祝福留言",
+                "btn_submit": "囍 送出回覆",
+                "success_msg": "✨ 感謝您的回覆 ✨<p>我們已收到您的出席意願，<br>期待與您一同歡慶這個特別的日子！</p>",
+                "footer": "With love · 誠摯邀請",
+                "ph_name": "請輸入您的姓名", "ph_contact": "電話 / Line ID / Email", "ph_addr": "郵遞區號、地址、收件人、電話", "ph_other": "如果有其他需要協助的地方，請告訴我們", "ph_msg": "寫下您的祝福...",
+                "opt_none": "無", "opt_1_portion": "1份", "opt_2_portion": "2份", "opt_1_chair": "1張", "opt_2_chair": "2張", "opt_select": "請選擇",
+                "opt_cake_1": "台北結婚喜宴現場領取", "opt_cake_2": "金門訂婚現場領取", "opt_cake_3": "郵寄到府", "opt_cake_4": "預約新娘本人領取", "opt_cake_5": "我是男方親友，無須領取", "opt_over_5": "5人以上"
+            },
+            "ja": {
+                "title": "黄・王 結婚披露宴 | 凱銘 & 詠萱",
+                "env_title": "黄・王 披露宴",
+                "env_names": "凱銘 <span class='heart-beat'>♥</span> 詠萱",
+                "env_hint": "シーリングスタンプをタップして開く",
+                "hero_title": "黄・王 披 露 宴",
+                "hero_names": "凱銘<br><span class='heart-beat'>♥</span><br>詠萱",
+                "hero_date_solar": "令和9年 1月 1日 (金)",
+                "hero_date_lunar": "旧暦 丙午年 11月24日",
+                "time_days": "日", "time_hours": "時間", "time_mins": "分",
+                "wedding_started": "結婚式進行中！",
+                "gallery_title": "思い出の写真",
+                "gallery_hint": "← 左右にスワイプ →",
+                "cal_month": "令和9 年 1 月",
+                "cal_sun": "日", "cal_mon": "月", "cal_tue": "火", "cal_wed": "水", "cal_thu": "木", "cal_fri": "金", "cal_sat": "土",
+                "info_couple_title": "【 新 郎 新 婦 】",
+                "info_couple": "新郎：黄 凱銘<br>新婦：王 詠萱",
+                "info_host_title": "【 両 家 代 表 】",
+                "info_host": "新郎側：黄偉強、馮莉梅<br>新婦側：王金山、盛惠宝",
+                "info_banquet_title": "【 披 露 宴 ご 案 内 】",
+                "info_banquet_date": "令和9年 1月 1日 (金)<br>旧暦：丙午年 11月24日<br>11:30 受付開始 / 12:30 開宴<br><br><strong>グランドヴィクトリアホテル</strong><br>台北市中山区敬業四路168号",
+                "info_traffic_title": "【 ア ク セ ス 】",
+                "info_traffic": "🚇 MRT剣南路駅 3番出口より徒歩<br>🚗 ホテル地下駐車場あり（ゲスト6時間無料）",
+                "btn_traffic": "公式アクセス・駐車場ガイド", "btn_gcal": "Googleカレンダーに追加", "btn_acal": "Appleカレンダーをダウンロード",
+                "form_title": "出欠確認",
+                "form_desc": "お席の準備の都合上、<strong>2026年 11月 25日</strong>までにご返信をお願いいたします。<br>皆様にお会いできることを楽しみにしております！",
+                "lbl_name": "お名前 <span>*</span>", "lbl_contact": "ご連絡先 <span>*</span>", "lbl_attend": "ご出欠 <span>*</span>",
+                "opt_attend_yes": "出席（お会いできるのを楽しみにしています！）", "opt_attend_no": "欠席（心より祝福申し上げます）",
+                "lbl_count": "出席人数（ご自身を含む）", "lbl_veg": "ベジタリアン食の数（不要な場合は空欄）", "lbl_chair": "ベビーチェアの数（不要な場合は空欄）",
+                "opt_kinmen": "金門 結納式（2026/10/11 泗湖55号）— ご列席",
+                "lbl_cake": "引き出物（喜餅）のお受け取り方法", "lbl_addr": "ご住所（郵送をご希望の方）", "lbl_other": "その他のご要望（任意）", "lbl_msg": "新郎新婦へのメッセージ",
+                "btn_submit": "囍 送信",
+                "success_msg": "✨ ご返信ありがとうございます ✨<p>ご出欠の確認が取れました。<br>特別な日をご一緒できることを楽しみにしております！</p>",
+                "footer": "With love · 心を込めて",
+                "ph_name": "お名前を入力してください", "ph_contact": "電話 / Line ID / Email", "ph_addr": "郵便番号、住所、宛名、電話番号", "ph_other": "お手伝いが必要なことがあればお知らせください", "ph_msg": "メッセージをご記入ください...",
+                "opt_none": "なし", "opt_1_portion": "1食", "opt_2_portion": "2食", "opt_1_chair": "1脚", "opt_2_chair": "2脚", "opt_select": "選択してください",
+                "opt_cake_1": "台北披露宴会場で受け取る", "opt_cake_2": "金門結納式会場で受け取る", "opt_cake_3": "郵送", "opt_cake_4": "新婦から直接受け取る", "opt_cake_5": "新郎側の親族・友人のため不要", "opt_over_5": "5人以上"
+            },
+            "en": {
+                "title": "Wong & Wang Wedding | Hoi Ming & Yung-Hsuan",
+                "env_title": "Wedding Banquet",
+                "env_names": "Hoi Ming <span class='heart-beat'>♥</span> Yung-Hsuan",
+                "env_hint": "Tap the wax seal to open",
+                "hero_title": "WEDDING BANQUET",
+                "hero_names": "Hoi Ming<br><span class='heart-beat'>♥</span><br>Yung-Hsuan",
+                "hero_date_solar": "Friday, January 1, 2027",
+                "hero_date_lunar": "Lunar: Nov 24, Year of the Horse",
+                "time_days": "Days", "time_hours": "Hours", "time_mins": "Mins",
+                "wedding_started": "The wedding has started!",
+                "gallery_title": "Our Memories",
+                "gallery_hint": "← Swipe Left/Right →",
+                "cal_month": "January 2027",
+                "cal_sun": "Sun", "cal_mon": "Mon", "cal_tue": "Tue", "cal_wed": "Wed", "cal_thu": "Thu", "cal_fri": "Fri", "cal_sat": "Sat",
+                "info_couple_title": "【 THE COUPLE 】",
+                "info_couple": "Groom: Wong Hoi Ming<br>Bride: Wang Yung-Hsuan",
+                "info_host_title": "【 HOSTED BY 】",
+                "info_host": "Groom's Parents: Wong Wai Keung, Fung Li Mui<br>Bride's Parents: Wang Chin-Shan, Sheng Hui-Pao",
+                "info_banquet_title": "【 BANQUET INFO 】",
+                "info_banquet_date": "Date: Friday, January 1, 2027<br>Lunar: Nov 24, Year of the Horse<br>11:30 Reception / 12:30 Banquet Starts<br><br><strong>Grand Victoria Hotel</strong><br>No. 168, Jingye 4th Rd., Zhongshan Dist., Taipei City",
+                "info_traffic_title": "【 TRANSPORTATION 】",
+                "info_traffic": "🚇 Walk from MRT Jiannan Rd. Station Exit 3<br>🚗 Complimentary underground parking for 6 hours",
+                "btn_traffic": "Official Traffic & Parking Guide", "btn_gcal": "Add to Google Calendar", "btn_acal": "Download Apple Calendar",
+                "form_title": "RSVP",
+                "form_desc": "Please RSVP by <strong>November 25, 2026</strong>.<br>We look forward to celebrating with you!",
+                "lbl_name": "Guest Name <span>*</span>", "lbl_contact": "Contact Info <span>*</span>", "lbl_attend": "Attendance <span>*</span>",
+                "opt_attend_yes": "Attending (Can't wait to see you!)", "opt_attend_no": "Not Attending (Sending my best wishes)",
+                "lbl_count": "Total guests (incl. yourself)", "lbl_veg": "Vegetarian meals (leave blank if 0)", "lbl_chair": "Baby chairs (leave blank if 0)",
+                "opt_kinmen": "Kinmen Engagement Ceremony (2026/10/11) - Invited",
+                "lbl_cake": "How to receive the wedding favor (cake)", "lbl_addr": "Shipping Address (if choosing mail)", "lbl_other": "Other requirements (Optional)", "lbl_msg": "Message for the Bride & Groom",
+                "btn_submit": "囍 Submit RSVP",
+                "success_msg": "✨ Thank You ✨<p>We have received your response.<br>Looking forward to celebrating this special day with you!</p>",
+                "footer": "With love · You are cordially invited",
+                "ph_name": "Enter your name", "ph_contact": "Phone / Line ID / Email", "ph_addr": "Zip code, Address, Recipient, Phone", "ph_other": "Let us know if you need any assistance", "ph_msg": "Write your wishes...",
+                "opt_none": "None", "opt_1_portion": "1", "opt_2_portion": "2", "opt_1_chair": "1", "opt_2_chair": "2", "opt_select": "Please select",
+                "opt_cake_1": "Receive at Taipei Wedding Banquet", "opt_cake_2": "Receive at Kinmen Engagement", "opt_cake_3": "Mail to my address", "opt_cake_4": "Receive directly from the bride", "opt_cake_5": "Groom's side (Not applicable)", "opt_over_5": "5 or more"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.title = i18n[lang]["title"];
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang][key]) {
+                    el.innerHTML = i18n[lang][key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (i18n[lang][key]) {
+                    el.placeholder = i18n[lang][key];
+                }
+            });
+        }
+        
+        function scrollToTop(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', function() {
+            const topBtn = document.getElementById('backToTopBtn');
+            if (window.scrollY > 300) {
+                topBtn.classList.add('show');
+            } else {
+                topBtn.classList.remove('show');
+            }
+        });
+
         function startFallingHearts() {
             const container = document.getElementById('falling-hearts-container');
             setInterval(() => {
@@ -569,7 +765,6 @@
             }, 800);
         }
 
-        // 開信囍字特效
         function createConfetti() {
             const container = document.getElementById('confetti-container');
             const colors = ['#D81B60', '#D4AF37', '#FFB6C1', '#880E4F']; 
@@ -611,14 +806,13 @@
             setTimeout(() => { wrapper.style.opacity = '0'; wrapper.style.visibility = 'hidden'; startFallingHearts(); }, 4500);
         }
 
-        // 婚期倒數
         const weddingDate = new Date("Jan 1, 2027 12:30:00").getTime();
         const timer = setInterval(function() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
             if (distance < 0) {
                 clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "<div style='font-size:1.8rem; color:#D81B60; font-weight:900;'>婚禮進行中！</div>";
+                document.getElementById("countdown").innerHTML = `<div style='font-size:1.8rem; color:#D81B60; font-weight:900;' data-i18n="wedding_started">${i18n[document.documentElement.lang]['wedding_started']}</div>`;
                 return;
             }
             document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -626,7 +820,6 @@
             document.getElementById("minutes").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         }, 1000);
 
-        // 🛠️ 終極防彈版：下載行事曆 (使用 String.fromCharCode)
         function downloadICS() {
             const nl = String.fromCharCode(10);
             const icsData = "BEGIN:VCALENDAR" + nl +
@@ -642,18 +835,20 @@
             const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
             const url = window.URL.createObjectURL(blob);
             const link = document.createElement('a');
-            link.href = url; link.setAttribute('download', 'Huang_Wang_Wedding.ics');
+            link.href = url; link.setAttribute('download', 'Wong_Wang_Wedding.ics');
             document.body.appendChild(link); link.click(); document.body.removeChild(link);
         }
 
-        // 🚀 串接 Google 表單背景發送邏輯
         const GFORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfH796FmRpn7Lp9jUhXYuq9QTlyAgXndj-Qz74q6h0XD-F6Wg/formResponse';
         
         document.getElementById('rsvpForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
+            const currentLang = document.documentElement.lang;
+            const originalText = btn.textContent;
+            
             btn.disabled = true;
-            btn.textContent = '送出中...';
+            btn.textContent = '...'; 
 
             const attendElement = document.querySelector('input[name="attend"]:checked');
             const attendVal = attendElement && attendElement.value === 'yes'
@@ -698,7 +893,7 @@
             }).catch(error => {
                 alert('傳送發生錯誤，請稍後再試或直接聯繫新人。');
                 btn.disabled = false;
-                btn.textContent = '囍 送出回覆';
+                btn.textContent = originalText;
             });
         });
     </script>
