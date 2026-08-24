@@ -225,8 +225,9 @@
         .hero h1 { font-size: 4.5rem; letter-spacing: 12px; margin: 10px 0 20px 0; color: var(--magenta-primary); line-height: 1.2; }
         .hero h1 .heart-beat { font-size: 3.5rem; margin: 10px 0; }
         .hero .date { color: var(--magenta-dark); letter-spacing: 3px; font-weight: 900; font-size: 1.2rem; padding: 10px 0; }
-        .countdown { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
-        .time-box { background: var(--white-card); padding: 12px 10px; border-radius: 15px; min-width: 70px; border: 2px solid var(--pink-bg); }
+        
+        .countdown { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
+        .time-box { background: var(--white-card); padding: 12px 10px; border-radius: 15px; min-width: 65px; border: 2px solid var(--pink-bg); }
         .time-box span { display: block; font-size: 2rem; font-weight: 900; color: var(--magenta-primary); }
         .time-box small { font-size: 0.9rem; color: #888; font-weight: bold; }
 
@@ -335,6 +336,10 @@
             .polaroid { height: 350px; }
             .hero h1 .heart-beat { font-size: 3rem; }
             .flight-path { font-size: 2rem; letter-spacing: 4px; }
+            .countdown { gap: 10px; }
+            .time-box { min-width: 55px; padding: 10px 5px; }
+            .time-box span { font-size: 1.5rem; }
+            .time-box small { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -430,6 +435,7 @@
                 <div class="time-box"><span id="days">0</span><small data-i18n="time_days">天</small></div>
                 <div class="time-box"><span id="hours">0</span><small data-i18n="time_hours">時</small></div>
                 <div class="time-box"><span id="minutes">0</span><small data-i18n="time_mins">分</small></div>
+                <div class="time-box"><span id="seconds">0</span><small data-i18n="time_secs">秒</small></div>
             </div>
             <div class="story-illustration"><div class="flight-path">HKG ✈ KNH</div></div>
         </div>
@@ -454,7 +460,7 @@
                 <div class="cal-day-header" data-i18n="cal_sun">日</div><div class="cal-day-header" data-i18n="cal_mon">一</div><div class="cal-day-header" data-i18n="cal_tue">二</div><div class="cal-day-header" data-i18n="cal_wed">三</div><div class="cal-day-header" data-i18n="cal_thu">四</div><div class="cal-day-header" data-i18n="cal_fri">五</div><div class="cal-day-header" data-i18n="cal_sat">六</div>
                 <div></div><div></div><div></div><div></div><div></div>
                 <div class="cal-date cal-highlight">1</div>
-                <div class="cal-date">2</div><div class="cal-date">3</div><div class="cal-date">4</div><div class="cal-date">5</div><div class="cal-date">6</div><div class="cal-date">7</div><div class="cal-date">8</div>
+                <div class="cal-date">2</div><div class="cal-date">3</div><div class="cal-date">4</div><div class="cal-date">5</div><div class="cal-date">6</div><div class="cal-date">7</div><div class="cal-date">8</div><div class="cal-date">9</div>
             </div>
         </div>
 
@@ -483,7 +489,7 @@
 
         <div class="btn-group">
             <a href="https://grandvictoria.com.tw/%e4%ba%a4%e9%80%9a%e4%bd%8d%e7%bd%ae/" target="_blank" class="calendar-btn" data-i18n="btn_traffic">官網交通與停車指南</a>
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%E9%BB%83%E7%8E%8B%E5%BA%9C%E5%96%9C%E5%AE%B4-%E5%87%B1%E9%8A%98%E8%88%87%E8%A9%A0%E8%90%B1%E5%A9%9A%E7%A6%AE&dates=20270101T033000Z/20270101T073000Z&details=%E8%AA%A0%E6%91%AF%E9%82%80%E8%AB%8B%E6%82%A8%E8%88%87%E6%88%91%E5%80%91%E4%B8%80%E5%90%8C%E8%A6%8B%E8%AD%89%E9%80%99%E4%BB%BD%E5%96%9C%E6%82%85%E3%80%82&location=%E7%B6%AD%E5%A4%9A%E9%BA%97%E4%BA%9E%E9%85%92%E5%BA%97" target="_blank" class="calendar-btn" data-i18n="btn_gcal">加入 Google 行事曆</a>
+            <a href="#" id="btnGcal" target="_blank" class="calendar-btn" data-i18n="btn_gcal">加入 Google 行事曆</a>
             <button onclick="downloadICS()" class="calendar-btn" style="font-family: inherit;" data-i18n="btn_acal">下載 Apple 行事曆</button>
         </div>
 
@@ -608,7 +614,7 @@
                 "hero_names": "凱銘<br><span class='heart-beat'>♥</span><br>詠萱",
                 "hero_date_solar": "國曆 116 年 1 月 1 日 (五)",
                 "hero_date_lunar": "農曆 丙午年 十一月廿四",
-                "time_days": "天", "time_hours": "時", "time_mins": "分",
+                "time_days": "天", "time_hours": "時", "time_mins": "分", "time_secs": "秒",
                 "wedding_started": "婚禮進行中！",
                 "gallery_title": "相愛拾光",
                 "gallery_hint": "← 左右滑動翻閱 →",
@@ -635,7 +641,14 @@
                 "footer": "With love · 誠摯邀請",
                 "ph_name": "請輸入您的姓名", "ph_contact": "電話 / Line ID / Email", "ph_addr": "郵遞區號、地址、收件人、電話", "ph_other": "如果有其他需要協助的地方，請告訴我們", "ph_msg": "寫下您的祝福...",
                 "opt_none": "無", "opt_1_portion": "1份", "opt_2_portion": "2份", "opt_1_chair": "1張", "opt_2_chair": "2張", "opt_select": "請選擇",
-                "opt_cake_1": "台北結婚喜宴現場領取", "opt_cake_2": "金門訂婚現場領取", "opt_cake_3": "郵寄到府", "opt_cake_4": "預約新娘本人領取", "opt_cake_5": "我是男方親友，無須領取", "opt_over_5": "5人以上"
+                "opt_cake_1": "台北結婚喜宴現場領取", "opt_cake_2": "金門訂婚現場領取", "opt_cake_3": "郵寄到府", "opt_cake_4": "預約新娘本人領取", "opt_cake_5": "我是男方親友，無須領取", "opt_over_5": "5人以上",
+                "gcal_title": "黃王府囍宴 - 凱銘與詠萱婚禮",
+                "gcal_details": "誠摯邀請您與我們一同見證這份喜悅。",
+                "gcal_location": "維多麗亞酒店",
+                "ics_summary": "黃王府囍宴 | 凱銘 & 詠萱 婚禮",
+                "ics_description": "誠摯邀請您與我們一同見證這份喜悅。",
+                "ics_location": "維多麗亞酒店 (台北市中山區敬業四路168號)",
+                "ics_filename": "Wong_Wang_Wedding.ics"
             },
             "ja": {
                 "title": "黄・王 結婚披露宴 | 凱銘 & 詠萱",
@@ -646,7 +659,7 @@
                 "hero_names": "凱銘<br><span class='heart-beat'>♥</span><br>詠萱",
                 "hero_date_solar": "令和9年 1月 1日 (金)",
                 "hero_date_lunar": "旧暦 丙午年 11月24日",
-                "time_days": "日", "time_hours": "時間", "time_mins": "分",
+                "time_days": "日", "time_hours": "時間", "time_mins": "分", "time_secs": "秒",
                 "wedding_started": "結婚式進行中！",
                 "gallery_title": "思い出の写真",
                 "gallery_hint": "← 左右にスワイプ →",
@@ -673,7 +686,14 @@
                 "footer": "With love · 心を込めて",
                 "ph_name": "お名前を入力してください", "ph_contact": "電話 / Line ID / Email", "ph_addr": "郵便番号、住所、宛名、電話番号", "ph_other": "お手伝いが必要なことがあればお知らせください", "ph_msg": "メッセージをご記入ください...",
                 "opt_none": "なし", "opt_1_portion": "1食", "opt_2_portion": "2食", "opt_1_chair": "1脚", "opt_2_chair": "2脚", "opt_select": "選択してください",
-                "opt_cake_1": "台北披露宴会場で受け取る", "opt_cake_2": "金門結納式会場で受け取る", "opt_cake_3": "郵送", "opt_cake_4": "新婦から直接受け取る", "opt_cake_5": "新郎側の親族・友人のため不要", "opt_over_5": "5人以上"
+                "opt_cake_1": "台北披露宴会場で受け取る", "opt_cake_2": "金門結納式会場で受け取る", "opt_cake_3": "郵送", "opt_cake_4": "新婦から直接受け取る", "opt_cake_5": "新郎側の親族・友人のため不要", "opt_over_5": "5人以上",
+                "gcal_title": "黄・王 披露宴 - 凱銘 & 詠萱 結婚式",
+                "gcal_details": "特別な日をご一緒できることを楽しみにしております。",
+                "gcal_location": "グランドヴィクトリアホテル",
+                "ics_summary": "黄・王 披露宴 | 凱銘 & 詠萱 結婚式",
+                "ics_description": "特別な日をご一緒できることを楽しみにしております。",
+                "ics_location": "グランドヴィクトリアホテル (台北市中山区敬業四路168号)",
+                "ics_filename": "Wong_Wang_Wedding_JP.ics"
             },
             "en": {
                 "title": "Wong & Wang Wedding | Hoi Ming & Yung-Hsuan",
@@ -684,7 +704,7 @@
                 "hero_names": "Hoi Ming<br><span class='heart-beat'>♥</span><br>Yung-Hsuan",
                 "hero_date_solar": "Friday, January 1, 2027",
                 "hero_date_lunar": "Lunar: Nov 24, Year of the Horse",
-                "time_days": "Days", "time_hours": "Hours", "time_mins": "Mins",
+                "time_days": "Days", "time_hours": "Hours", "time_mins": "Mins", "time_secs": "Secs",
                 "wedding_started": "The wedding has started!",
                 "gallery_title": "Our Memories",
                 "gallery_hint": "← Swipe Left/Right →",
@@ -711,9 +731,28 @@
                 "footer": "With love · You are cordially invited",
                 "ph_name": "Enter your name", "ph_contact": "Phone / Line ID / Email", "ph_addr": "Zip code, Address, Recipient, Phone", "ph_other": "Let us know if you need any assistance", "ph_msg": "Write your wishes...",
                 "opt_none": "None", "opt_1_portion": "1", "opt_2_portion": "2", "opt_1_chair": "1", "opt_2_chair": "2", "opt_select": "Please select",
-                "opt_cake_1": "Receive at Taipei Wedding Banquet", "opt_cake_2": "Receive at Kinmen Engagement", "opt_cake_3": "Mail to my address", "opt_cake_4": "Receive directly from the bride", "opt_cake_5": "Groom's side (Not applicable)", "opt_over_5": "5 or more"
+                "opt_cake_1": "Receive at Taipei Wedding Banquet", "opt_cake_2": "Receive at Kinmen Engagement", "opt_cake_3": "Mail to my address", "opt_cake_4": "Receive directly from the bride", "opt_cake_5": "Groom's side (Not applicable)", "opt_over_5": "5 or more",
+                "gcal_title": "Wong & Wang Wedding - Hoi Ming & Yung-Hsuan",
+                "gcal_details": "We look forward to celebrating this special day with you!",
+                "gcal_location": "Grand Victoria Hotel",
+                "ics_summary": "Wong & Wang Wedding Banquet | Hoi Ming & Yung-Hsuan",
+                "ics_description": "We look forward to celebrating this special day with you!",
+                "ics_location": "Grand Victoria Hotel (No. 168, Jingye 4th Rd., Zhongshan Dist., Taipei City)",
+                "ics_filename": "Wong_Wang_Wedding_EN.ics"
             }
         };
+
+        function updateGoogleCalendarLink(lang) {
+            const info = i18n[lang] || i18n["zh-TW"];
+            const text = encodeURIComponent(info.gcal_title);
+            const details = encodeURIComponent(info.gcal_details);
+            const location = encodeURIComponent(info.gcal_location);
+            const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=20270101T033000Z/20270101T073000Z&details=${details}&location=${location}`;
+            const btn = document.getElementById('btnGcal');
+            if (btn) {
+                btn.href = url;
+            }
+        }
 
         function changeLanguage(lang) {
             document.documentElement.lang = lang;
@@ -732,7 +771,12 @@
                     el.placeholder = i18n[lang][key];
                 }
             });
+
+            updateGoogleCalendarLink(lang);
         }
+
+        // 初期言語用のGoogleカレンダーリンク設定
+        updateGoogleCalendarLink('zh-TW');
         
         function scrollToTop(e) {
             e.preventDefault();
@@ -818,24 +862,27 @@
             document.getElementById("days").innerHTML = Math.floor(distance / (1000 * 60 * 60 * 24));
             document.getElementById("hours").innerHTML = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             document.getElementById("minutes").innerHTML = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerHTML = Math.floor((distance % (1000 * 60)) / 1000);
         }, 1000);
 
         function downloadICS() {
+            const lang = document.documentElement.lang || 'zh-TW';
+            const info = i18n[lang] || i18n['zh-TW'];
             const nl = String.fromCharCode(10);
             const icsData = "BEGIN:VCALENDAR" + nl +
                 "VERSION:2.0" + nl +
                 "BEGIN:VEVENT" + nl +
-                "SUMMARY:黃王府囍宴 | 凱銘 & 詠萱 婚禮" + nl +
+                "SUMMARY:" + info.ics_summary + nl +
                 "DTSTART;TZID=Asia/Taipei:20270101T120000" + nl +
                 "DTEND;TZID=Asia/Taipei:20270101T153000" + nl +
-                "LOCATION:維多麗亞酒店 (台北市中山區敬業四路168號)" + nl +
-                "DESCRIPTION:誠摯邀請您與我們一同見證這份喜悅。" + nl +
+                "LOCATION:" + info.ics_location + nl +
+                "DESCRIPTION:" + info.ics_description + nl +
                 "END:VEVENT" + nl +
                 "END:VCALENDAR";
             const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
             const url = window.URL.createObjectURL(blob);
             const link = document.createElement('a');
-            link.href = url; link.setAttribute('download', 'Wong_Wang_Wedding.ics');
+            link.href = url; link.setAttribute('download', info.ics_filename || 'Wong_Wang_Wedding.ics');
             document.body.appendChild(link); link.click(); document.body.removeChild(link);
         }
 
