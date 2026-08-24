@@ -238,6 +238,15 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient-shift 3s ease infinite;
             filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.8)); white-space: nowrap; 
         }
+        .flight-path-sub {
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #FF4B2B, #FF416C, #F7B733, #FF4B2B); background-size: 300% 300%;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient-shift 3s ease infinite;
+            filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.8)); white-space: nowrap; 
+}
 
         .gallery-section { padding: 30px 0; }
         .gallery-section h2 { font-size: 1.8rem; font-weight: 900; color: var(--magenta-primary); letter-spacing: 4px; margin-bottom: 10px; }
@@ -336,6 +345,7 @@
             .polaroid { height: 350px; }
             .hero h1 .heart-beat { font-size: 3rem; }
             .flight-path { font-size: 2rem; letter-spacing: 4px; }
+            .flight-path-sub { font-size: 1rem; letter-spacing: 3px; }
             .countdown { gap: 10px; }
             .time-box { min-width: 55px; padding: 10px 5px; }
             .time-box span { font-size: 1.5rem; }
@@ -349,7 +359,7 @@
         <select id="langSelect" onchange="changeLanguage(this.value)">
             <option value="zh-TW" selected>🇭🇰🇹🇼繁體中文</option>
             <option value="ja">🇯🇵日本語</option>
-            <option value="en">🇺🇸English</option>
+            <option value="en">🇬🇧🇺🇸English</option>
         </select>
     </div>
 
@@ -437,7 +447,10 @@
                 <div class="time-box"><span id="minutes">0</span><small data-i18n="time_mins">分</small></div>
                 <div class="time-box"><span id="seconds">0</span><small data-i18n="time_secs">秒</small></div>
             </div>
-            <div class="story-illustration"><div class="flight-path">HKG ✈ KNH</div></div>
+            <div class="story-illustration">
+                <div class="flight-path">HKG ✈ KNH</div>
+                <div class="flight-path-sub">NGO ✈ TPE</div>
+            </div>
         </div>
     </header>
 
@@ -488,7 +501,7 @@
         </div>
 
         <div class="btn-group">
-            <a href="https://grandvictoria.com.tw/%e4%ba%a4%e9%80%9a%e4%bd%8d%e7%bd%ae/" target="_blank" class="calendar-btn" data-i18n="btn_traffic">官網交通與停車指南</a>
+            <a href="https://grandvictoria.com.tw/%e4%ba%a4%e9%80%9a%e4%bd%8d%e7%bd%ae/" id="btnTraffic" target="_blank" class="calendar-btn" data-i18n="btn_traffic">官網交通與停車指南</a>
             <a href="#" id="btnGcal" target="_blank" class="calendar-btn" data-i18n="btn_gcal">加入 Google 行事曆</a>
             <button onclick="downloadICS()" class="calendar-btn" style="font-family: inherit;" data-i18n="btn_acal">下載 Apple 行事曆</button>
         </div>
@@ -648,7 +661,8 @@
                 "ics_summary": "黃王府囍宴 | 凱銘 & 詠萱 婚禮",
                 "ics_description": "誠摯邀請您與我們一同見證這份喜悅。",
                 "ics_location": "維多麗亞酒店 (台北市中山區敬業四路168號)",
-                "ics_filename": "Wong_Wang_Wedding.ics"
+                "ics_filename": "Wong_Wang_Wedding.ics",
+                "traffic_url": "https://grandvictoria.com.tw/%e4%ba%a4%e9%80%9a%e4%bd%8d%e7%bd%ae/"
             },
             "ja": {
                 "title": "黄・王 結婚披露宴 | 凱銘 & 詠萱",
@@ -680,7 +694,7 @@
                 "opt_attend_yes": "出席（お会いできるのを楽しみにしています！）", "opt_attend_no": "欠席（心より祝福申し上げます）",
                 "lbl_count": "出席人数（ご自身を含む）", "lbl_veg": "ベジタリアン食の数（不要な場合は空欄）", "lbl_chair": "ベビーチェアの数（不要な場合は空欄）",
                 "opt_kinmen": "金門 結納式（2026/10/11 泗湖55号）— ご列席",
-                "lbl_cake": "引き出物（喜餅）のお受け取り方法", "lbl_addr": "ご住所（郵送をご希望の方）", "lbl_other": "その他のご要望（任意）", "lbl_msg": "新郎新婦へのメッセージ",
+                "lbl_cake": "引き出物のお受け取り方法", "lbl_addr": "ご住所（郵送をご希望の方）", "lbl_other": "その他のご要望（任意）", "lbl_msg": "新郎新婦へのメッセージ",
                 "btn_submit": "囍 送信",
                 "success_msg": "✨ ご返信ありがとうございます ✨<p>ご出欠の確認が取れました。<br>特別な日をご一緒できることを楽しみにしております！</p>",
                 "footer": "With love · 心を込めて",
@@ -693,7 +707,8 @@
                 "ics_summary": "黄・王 披露宴 | 凱銘 & 詠萱 結婚式",
                 "ics_description": "特別な日をご一緒できることを楽しみにしております。",
                 "ics_location": "グランドヴィクトリアホテル (台北市中山区敬業四路168号)",
-                "ics_filename": "Wong_Wang_Wedding_JP.ics"
+                "ics_filename": "Wong_Wang_Wedding_JP.ics",
+                "traffic_url": "https://grandvictoria.com.tw/ja/%E4%BA%A4%E9%80%9A%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/"
             },
             "en": {
                 "title": "Wong & Wang Wedding | Hoi Ming & Yung-Hsuan",
@@ -738,7 +753,8 @@
                 "ics_summary": "Wong & Wang Wedding Banquet | Hoi Ming & Yung-Hsuan",
                 "ics_description": "We look forward to celebrating this special day with you!",
                 "ics_location": "Grand Victoria Hotel (No. 168, Jingye 4th Rd., Zhongshan Dist., Taipei City)",
-                "ics_filename": "Wong_Wang_Wedding_EN.ics"
+                "ics_filename": "Wong_Wang_Wedding_EN.ics",
+                "traffic_url": "https://grandvictoria.com.tw/en/location/"
             }
         };
 
@@ -751,6 +767,14 @@
             const btn = document.getElementById('btnGcal');
             if (btn) {
                 btn.href = url;
+            }
+        }
+
+        function updateTrafficLink(lang) {
+            const info = i18n[lang] || i18n["zh-TW"];
+            const btn = document.getElementById('btnTraffic');
+            if (btn && info.traffic_url) {
+                btn.href = info.traffic_url;
             }
         }
 
@@ -773,10 +797,11 @@
             });
 
             updateGoogleCalendarLink(lang);
+            updateTrafficLink(lang);
         }
 
-        // 初期言語用のGoogleカレンダーリンク設定
         updateGoogleCalendarLink('zh-TW');
+        updateTrafficLink('zh-TW');
         
         function scrollToTop(e) {
             e.preventDefault();
