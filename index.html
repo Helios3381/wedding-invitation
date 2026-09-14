@@ -339,6 +339,73 @@
             letter-spacing: 3px; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: bold;
         }
 
+
+        .kinmen-box {
+            background: linear-gradient(135deg, #FFF5F7 0%, #FFF0F3 100%);
+            border: 1.5px solid var(--gold-light);
+            border-radius: 12px;
+            padding: 16px 18px;
+            text-align: left;
+        }
+        .kinmen-title {
+            font-weight: 900;
+            color: var(--magenta-primary);
+            font-size: 0.98rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .kinmen-hint {
+            font-size: 0.88rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .kinmen-check {
+            background: white !important;
+            border: 1px solid var(--gold-light) !important;
+            margin: 0 !important;
+            font-size: 0.95rem !important;
+        }
+        .form-group label {
+            letter-spacing: 0.5px;
+        }
+        .radio-group {
+            gap: 10px;
+        }
+        .radio-label {
+            background: var(--pink-bg);
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .radio-label:has(input:checked) {
+            border-color: var(--gold-primary);
+            background: #FFF8F0;
+        }
+        .wedding-form select,
+        .wedding-form input[type="text"],
+        .wedding-form textarea {
+            border: 1.5px solid #e8d5d8;
+            border-radius: 10px;
+            padding: 13px 14px;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+        .wedding-form select:focus,
+        .wedding-form input[type="text"]:focus,
+        .wedding-form textarea:focus {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+            outline: none;
+        }
+        .form-desc {
+            background: #FFF9FA;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 28px !important;
+            border: 1px dashed var(--gold-light);
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 4rem; }
             .hero-title { font-size: 2rem; }
@@ -506,14 +573,16 @@
             <button onclick="downloadICS()" class="calendar-btn" style="font-family: inherit;" data-i18n="btn_acal">下載 Apple 行事曆</button>
         </div>
 
-        <div class="wedding-form" id="formWrapper">
+                <div class="wedding-form" id="formWrapper">
             <h3 data-i18n="form_title">出席意願調查</h3>
             <div class="form-desc" data-i18n="form_desc">
-                懇請您於 <strong>115 年 11 月 25 日前</strong> 完成回覆<br>
-                以利我們安排座位，期待與您一同分享這份喜悅！
+                為了方便統計桌數與安排座位，懇請您於 <strong>115 年 11 月 1 日前</strong> 完成此表單<br>
+                期待與您一同分享這份喜悅！ — 凱銘 &amp; 詠萱 敬邀<br>
+                <span style="display:block; margin-top:10px; font-size:0.88rem; color:#888; line-height:1.5;">🎉 溫馨提醒：若送出後需要更改，歡迎重新填寫，我們以最新一份為準</span>
             </div>
 
             <form id="rsvpForm">
+                <!-- 基本資料 -->
                 <div class="form-group">
                     <label data-i18n="lbl_name">賓客姓名 <span>*</span></label>
                     <input type="text" id="guestName" required data-i18n-placeholder="ph_name" placeholder="請輸入您的姓名">
@@ -521,21 +590,50 @@
 
                 <div class="form-group">
                     <label data-i18n="lbl_contact">聯絡方式 <span>*</span></label>
-                    <input type="text" id="contactInfo" required data-i18n-placeholder="ph_contact" placeholder="電話 / Line ID / Email">
+                    <input type="text" id="contactInfo" required data-i18n-placeholder="ph_contact" placeholder="手機電話、WhatsApp、Line、Facebook、Email 或其他 SNS">
                 </div>
 
                 <div class="form-group">
-                    <label data-i18n="lbl_attend">出席狀況 <span>*</span></label>
+                    <label data-i18n="lbl_side">誰的親朋好友 <span>*</span></label>
                     <div class="radio-group">
                         <label class="radio-label">
-                            <input type="radio" name="attend" value="yes" required> <span data-i18n="opt_attend_yes">確定出席（期待與您相見！）</span>
+                            <input type="radio" name="guestSide" value="新郎" required>
+                            <span data-i18n="opt_side_groom">新郎</span>
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="attend" value="no"> <span data-i18n="opt_attend_no">不克出席（心意收到，獻上祝福）</span>
+                            <input type="radio" name="guestSide" value="新娘">
+                            <span data-i18n="opt_side_bride">新娘</span>
                         </label>
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label data-i18n="lbl_attend">是否出席婚宴 <span>*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="attend" value="yes" required>
+                            <span data-i18n="opt_attend_yes">確定出席（期待與您相見！）</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="attend" value="no">
+                            <span data-i18n="opt_attend_no">不克出席（心意收到，獻上祝福）</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 金門文定 -->
+                <div class="form-group">
+                    <div class="kinmen-box">
+                        <div class="kinmen-title" data-i18n="opt_kinmen_title">【金門文定儀式】僅訂於 115 年 10 月 11 日（星期日）新娘詠萱家（泗湖 55 號）</div>
+                        <div class="kinmen-hint" data-i18n="opt_kinmen_hint">🎉 誠摯歡迎想湊熱鬧的親友來觀禮！記得提早買機票與安排住宿喔～</div>
+                        <label class="checkbox-label kinmen-check">
+                            <input type="checkbox" id="kinmenCheck" value="1">
+                            <span data-i18n="opt_kinmen">我要觀禮，機票我來搞定！</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 出席細節 -->
                 <div class="form-group">
                     <label data-i18n="lbl_count">出席總人數（含您自己）</label>
                     <select id="guestCount">
@@ -543,60 +641,57 @@
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
-                        <option value="5人以上" data-i18n="opt_over_5">5人以上</option>
+                        <option value="其他請備註" data-i18n="opt_other_note">其他請備註</option>
+                        <option value="不克出席" data-i18n="opt_count_no">不克出席</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label data-i18n="lbl_veg">素食份數（葷食免填）</label>
-                    <select id="vegCount">
-                        <option value="" data-i18n="opt_none">無</option>
-                        <option value="1份" data-i18n="opt_1_portion">1份</option>
-                        <option value="2份" data-i18n="opt_2_portion">2份</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label data-i18n="lbl_chair">嬰兒椅張數（無孩童免填）</label>
+                    <label data-i18n="lbl_chair">是否需要為年幼孩童準備嬰兒椅（無幼童免填）</label>
                     <select id="babyChair">
-                        <option value="" data-i18n="opt_none">無</option>
-                        <option value="1張" data-i18n="opt_1_chair">1張</option>
-                        <option value="2張" data-i18n="opt_2_chair">2張</option>
+                        <option value="" data-i18n="opt_none">—</option>
+                        <option value="1張" data-i18n="opt_1_chair">1 張</option>
+                        <option value="2張" data-i18n="opt_2_chair">2 張</option>
+                        <option value="其他請備住" data-i18n="opt_other_chair">其他請備住</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="kinmenCheck" value="1">
-                        <span data-i18n="opt_kinmen">金門文定儀式（115/10/11 泗湖55號）— 敬邀觀禮</span>
-                    </label>
+                    <label data-i18n="lbl_veg">是否需要素食餐食（葷食免填）</label>
+                    <select id="vegCount">
+                        <option value="" data-i18n="opt_none">—</option>
+                        <option value="1份" data-i18n="opt_1_portion">1 份</option>
+                        <option value="2份" data-i18n="opt_2_portion">2 份</option>
+                        <option value="其他請備住" data-i18n="opt_other_veg">其他請備住</option>
+                    </select>
                 </div>
 
+                <!-- 喜餅 -->
                 <div class="form-group">
                     <label data-i18n="lbl_cake">領取喜餅的方式</label>
                     <select id="cakeOption">
                         <option value="" data-i18n="opt_select">請選擇</option>
                         <option value="台北結婚喜宴現場領取" data-i18n="opt_cake_1">台北結婚喜宴現場領取</option>
-                        <option value="金門訂婚現場領取" data-i18n="opt_cake_2">金門訂婚現場領取</option>
                         <option value="郵寄到府" data-i18n="opt_cake_3">郵寄到府</option>
                         <option value="預約新娘本人領取" data-i18n="opt_cake_4">預約新娘本人領取</option>
-                        <option value="我是男方親友，無須領取" data-i18n="opt_cake_5">我是男方親友，無須領取</option>
+                        <option value="我是新郎親友" data-i18n="opt_cake_5">我是新郎親友</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label data-i18n="lbl_addr">收件地址（選郵寄時請填）</label>
-                    <textarea id="shippingAddress" rows="2" data-i18n-placeholder="ph_addr" placeholder="郵遞區號、地址、收件人、電話"></textarea>
+                    <textarea id="shippingAddress" rows="2" data-i18n-placeholder="ph_addr" placeholder="郵遞區號、收件地址、收件人、連絡電話"></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label data-i18n="lbl_other">其他需求（選填）</label>
-                    <input type="text" id="otherNeed" data-i18n-placeholder="ph_other" placeholder="如果有其他需要協助的地方，請告訴我們">
-                </div>
-
+                <!-- 留言 -->
                 <div class="form-group">
                     <label data-i18n="lbl_msg">給新郎新娘的祝福留言</label>
                     <textarea id="wishesMsg" rows="3" data-i18n-placeholder="ph_msg" placeholder="寫下您的祝福..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label data-i18n="lbl_other">其他備註</label>
+                    <input type="text" id="otherNeed" data-i18n-placeholder="ph_other" placeholder="有其他需要協助的地方，請告訴我們">
                 </div>
 
                 <button type="submit" class="submit-btn" id="submitBtn" data-i18n="btn_submit">囍 送出回覆</button>
@@ -643,18 +738,22 @@
                 "info_traffic": "🚇 捷運劍南路站 3 號出口步行<br>🚗 飯店備有地下停車場，賓客享免費停車 6 小時",
                 "btn_traffic": "官網交通與停車指南", "btn_gcal": "加入 Google 行事曆", "btn_acal": "下載 Apple 行事曆",
                 "form_title": "出席意願調查",
-                "form_desc": "懇請您於 <strong>115 年 11 月 1 日（日）前</strong> 完成回覆<br>以利我們安排座位，期待與您一同分享這份喜悅！",
-                "lbl_name": "賓客姓名 <span>*</span>", "lbl_contact": "聯絡方式 <span>*</span>", "lbl_attend": "出席狀況 <span>*</span>",
+                "form_desc": "為了方便統計桌數與安排座位，懇請您於 <strong>115 年 11 月 1 日前</strong> 完成此表單<br>期待與您一同分享這份喜悅！ — 凱銘 &amp; 詠萱 敬邀<br><span style=\"display:block; margin-top:10px; font-size:0.88rem; color:#888; line-height:1.5;\">🎉 溫馨提醒：若送出後需要更改，歡迎重新填寫，我們以最新一份為準</span>",
+                "lbl_name": "賓客姓名 <span>*</span>", "lbl_contact": "聯絡方式 <span>*</span>", "lbl_side": "誰的親朋好友 <span>*</span>", "lbl_attend": "是否出席婚宴 <span>*</span>",
+                "opt_side_groom": "新郎", "opt_side_bride": "新娘",
                 "opt_attend_yes": "確定出席（期待與您相見！）", "opt_attend_no": "不克出席（心意收到，獻上祝福）",
-                "lbl_count": "出席總人數（含您自己）", "lbl_veg": "素食份數（葷食免填）", "lbl_chair": "嬰兒椅張數（無孩童免填）",
-                "opt_kinmen": "金門文定儀式（115/10/11 泗湖55號）— 敬邀觀禮",
-                "lbl_cake": "領取喜餅的方式", "lbl_addr": "收件地址（選郵寄時請填）", "lbl_other": "其他需求（選填）", "lbl_msg": "給新郎新娘的祝福留言",
+                "lbl_count": "出席總人數（含您自己）", "lbl_veg": "是否需要素食餐食（葷食免填）", "lbl_chair": "是否需要為年幼孩童準備嬰兒椅（無幼童免填）",
+                "opt_kinmen_title": "【金門文定儀式】僅訂於 115 年 10 月 11 日（星期日）新娘詠萱家（泗湖 55 號）",
+                "opt_kinmen_hint": "🎉 誠摯歡迎想湊熱鬧的親友來觀禮！記得提早買機票與安排住宿喔～",
+                "opt_kinmen": "我要觀禮，機票我來搞定！",
+                "lbl_cake": "領取喜餅的方式", "lbl_addr": "收件地址（選郵寄時請填）", "lbl_other": "其他備註", "lbl_msg": "給新郎新娘的祝福留言",
                 "btn_submit": "囍 送出回覆",
                 "success_msg": "✨ 感謝您的回覆 ✨<p>我們已收到您的出席意願，<br>期待與您一同歡慶這個特別的日子！</p>",
                 "footer": "With love · 誠摯邀請",
-                "ph_name": "請輸入您的姓名", "ph_contact": "電話 / Line ID / Email", "ph_addr": "郵遞區號、地址、收件人、電話", "ph_other": "如果有其他需要協助的地方，請告訴我們", "ph_msg": "寫下您的祝福...",
-                "opt_none": "無", "opt_1_portion": "1份", "opt_2_portion": "2份", "opt_1_chair": "1張", "opt_2_chair": "2張", "opt_select": "請選擇",
-                "opt_cake_1": "台北結婚喜宴現場領取", "opt_cake_2": "金門訂婚現場領取", "opt_cake_3": "郵寄到府", "opt_cake_4": "預約新娘本人領取", "opt_cake_5": "我是男方親友，無須領取", "opt_over_5": "5人以上",
+                "ph_name": "請輸入您的姓名", "ph_contact": "手機電話、WhatsApp、Line、Facebook、Email 或其他 SNS", "ph_addr": "郵遞區號、收件地址、收件人、連絡電話", "ph_other": "有其他需要協助的地方，請告訴我們", "ph_msg": "寫下您的祝福...",
+                "opt_none": "—", "opt_1_portion": "1 份", "opt_2_portion": "2 份", "opt_1_chair": "1 張", "opt_2_chair": "2 張", "opt_select": "請選擇",
+                "opt_count_no": "不克出席", "opt_other_note": "其他請備註", "opt_other_chair": "其他請備住", "opt_other_veg": "其他請備住",
+                "opt_cake_1": "台北結婚喜宴現場領取", "opt_cake_3": "郵寄到府", "opt_cake_4": "預約新娘本人領取", "opt_cake_5": "我是新郎親友",
                 "gcal_title": "黃王府囍宴 - 凱銘與詠萱婚禮",
                 "gcal_details": "誠摯邀請您與我們一同見證這份喜悅。",
                 "gcal_location": "維多麗亞酒店",
@@ -689,18 +788,22 @@
                 "info_traffic": "🚇 MRT剣南路駅 3番出口より徒歩<br>🚗 ホテル地下駐車場あり（ゲスト6時間無料）",
                 "btn_traffic": "公式アクセス・駐車場ガイド", "btn_gcal": "Googleカレンダーに追加", "btn_acal": "Appleカレンダーをダウンロード",
                 "form_title": "出欠確認",
-                "form_desc": "お席の準備の都合上、<strong>2026年 11月 1日（日）</strong>までにご返信をお願いいたします。<br>皆様にお会いできることを楽しみにしております！",
-                "lbl_name": "お名前 <span>*</span>", "lbl_contact": "ご連絡先 <span>*</span>", "lbl_attend": "ご出欠 <span>*</span>",
+                "form_desc": "お席の準備のため、<strong>2026年 11月 1日</strong>までにご返信をお願いいたします。<br>皆様とご一緒できることを楽しみにしております！ — 凱銘 &amp; 詠萱<br><span style=\"display:block; margin-top:10px; font-size:0.88rem; color:#888; line-height:1.5;\">🎉 送信後に変更が必要な場合は、再度ご記入ください（最新のものを優先します）</span>",
+                "lbl_name": "お名前 <span>*</span>", "lbl_contact": "ご連絡先 <span>*</span>", "lbl_side": "どちらのご友人・ご親族ですか <span>*</span>", "lbl_attend": "ご出欠 <span>*</span>",
+                "opt_side_groom": "新郎", "opt_side_bride": "新婦",
                 "opt_attend_yes": "出席（お会いできるのを楽しみにしています！）", "opt_attend_no": "欠席（心より祝福申し上げます）",
-                "lbl_count": "出席人数（ご自身を含む）", "lbl_veg": "ベジタリアン食の数（不要な場合は空欄）", "lbl_chair": "ベビーチェアの数（不要な場合は空欄）",
-                "opt_kinmen": "金門 結納式（2026/10/11 泗湖55号）— ご出席",
-                "lbl_cake": "引き出物のお受け取り方法", "lbl_addr": "ご住所（郵送をご希望の方）", "lbl_other": "その他のご要望（任意）", "lbl_msg": "新郎新婦へのメッセージ",
+                "lbl_count": "出席人数（ご自身を含む）", "lbl_veg": "ベジタリアン食は必要ですか（不要な場合は空欄）", "lbl_chair": "お子様用ベビーチェアは必要ですか（不要な場合は空欄）",
+                "opt_kinmen_title": "【金門 結納式】2026年10月11日（日）新婦宅（泗湖55号）",
+                "opt_kinmen_hint": "🎉 ご都合が合えばぜひご参加ください！航空券・宿泊は各自でご手配を",
+                "opt_kinmen": "観礼希望（航空券は各自手配）",
+                "lbl_cake": "引き出物のお受け取り方法", "lbl_addr": "ご住所（郵送の場合）", "lbl_other": "その他備考", "lbl_msg": "新郎新婦へのメッセージ",
                 "btn_submit": "囍 送信",
                 "success_msg": "✨ ご返信ありがとうございます ✨<p>ご出欠の確認が取れました。<br>特別な日をご一緒できることを楽しみにしております！</p>",
                 "footer": "With love · 心を込めて",
-                "ph_name": "お名前を入力してください", "ph_contact": "電話 / Line ID / Email", "ph_addr": "郵便番号、住所、宛名、電話番号", "ph_other": "お手伝いが必要なことがあればお知らせください", "ph_msg": "メッセージをご記入ください...",
-                "opt_none": "なし", "opt_1_portion": "1食", "opt_2_portion": "2食", "opt_1_chair": "1脚", "opt_2_chair": "2脚", "opt_select": "選択してください",
-                "opt_cake_1": "台北披露宴会場で受け取る", "opt_cake_2": "金門結納式会場で受け取る", "opt_cake_3": "郵送", "opt_cake_4": "新婦から直接受け取る", "opt_cake_5": "新郎側の親族・友人のため不要", "opt_over_5": "5人以上",
+                "ph_name": "お名前を入力してください", "ph_contact": "携帯・WhatsApp・Line・Facebook・Email など", "ph_addr": "郵便番号・住所・宛名・電話番号", "ph_other": "お手伝いが必要なことがあればお知らせください", "ph_msg": "メッセージをご記入ください...",
+                "opt_none": "—", "opt_1_portion": "1 食", "opt_2_portion": "2 食", "opt_1_chair": "1 脚", "opt_2_chair": "2 脚", "opt_select": "選択してください",
+                "opt_count_no": "欠席", "opt_other_note": "その他（備考に記入）", "opt_other_chair": "その他（備考に記入）", "opt_other_veg": "その他（備考に記入）",
+                "opt_cake_1": "台北披露宴会場で受け取る", "opt_cake_3": "郵送", "opt_cake_4": "新婦から直接受け取る", "opt_cake_5": "新郎側のため不要",
                 "gcal_title": "黄・王 披露宴 - 凱銘 & 詠萱 結婚式",
                 "gcal_details": "特別な日をご一緒できることを楽しみにしております。",
                 "gcal_location": "グランドヴィクトリアホテル",
@@ -735,18 +838,22 @@
                 "info_traffic": "🚇 Walk from MRT Jiannan Rd. Station Exit 3<br>🚗 Complimentary underground parking for 6 hours",
                 "btn_traffic": "Official Traffic & Parking Guide", "btn_gcal": "Add to Google Calendar", "btn_acal": "Download Apple Calendar",
                 "form_title": "RSVP",
-                "form_desc": "Please RSVP by <strong>November 1, 2026 (Sun)</strong>.<br>We look forward to celebrating with you!",
-                "lbl_name": "Guest Name <span>*</span>", "lbl_contact": "Contact Info <span>*</span>", "lbl_attend": "Attendance <span>*</span>",
-                "opt_attend_yes": "Attending (Can't wait to see you!)", "opt_attend_no": "Not Attending (Sending my best wishes)",
-                "lbl_count": "Total guests (incl. yourself)", "lbl_veg": "Vegetarian meals (leave blank if 0)", "lbl_chair": "Baby chairs (leave blank if 0)",
-                "opt_kinmen": "Kinmen Engagement Ceremony (2026/10/11)",
-                "lbl_cake": "How to receive the wedding favor (cake)", "lbl_addr": "Shipping Address (if choosing mail)", "lbl_other": "Other requirements (Optional)", "lbl_msg": "Message for the Bride & Groom",
+                "form_desc": "To help us arrange seating, please complete this form by <strong>November 1, 2026</strong>.<br>We look forward to celebrating with you! — Hoi Ming &amp; Yung-Hsuan<br><span style=\"display:block; margin-top:10px; font-size:0.88rem; color:#888; line-height:1.5;\">🎉 Need to make changes? Simply submit again — we'll use your latest response</span>",
+                "lbl_name": "Guest Name <span>*</span>", "lbl_contact": "Contact Info <span>*</span>", "lbl_side": "Whose guest are you? <span>*</span>", "lbl_attend": "Will you attend? <span>*</span>",
+                "opt_side_groom": "Groom", "opt_side_bride": "Bride",
+                "opt_attend_yes": "Yes, attending (Can't wait to see you!)", "opt_attend_no": "Unable to attend (Sending my best wishes)",
+                "lbl_count": "Total guests (including yourself)", "lbl_veg": "Vegetarian meals needed? (leave blank if none)", "lbl_chair": "Baby chairs for young children? (leave blank if none)",
+                "opt_kinmen_title": "【Kinmen Engagement】Oct 11, 2026 (Sun) at Bride's home (Sihu 55)",
+                "opt_kinmen_hint": "🎉 You're warmly welcome to join! Please arrange flights & accommodation in advance",
+                "opt_kinmen": "I will attend (I'll arrange flights myself)",
+                "lbl_cake": "How to receive the wedding favor", "lbl_addr": "Shipping address (if choosing mail)", "lbl_other": "Other notes", "lbl_msg": "Message for the Bride & Groom",
                 "btn_submit": "囍 Submit RSVP",
                 "success_msg": "✨ Thank You ✨<p>We have received your response.<br>Looking forward to celebrating this special day with you!</p>",
                 "footer": "With love · You are cordially invited",
-                "ph_name": "Enter your name", "ph_contact": "Phone / Line ID / Email", "ph_addr": "Zip code, Address, Recipient, Phone", "ph_other": "Let us know if you need any assistance", "ph_msg": "Write your wishes...",
-                "opt_none": "None", "opt_1_portion": "1", "opt_2_portion": "2", "opt_1_chair": "1", "opt_2_chair": "2", "opt_select": "Please select",
-                "opt_cake_1": "Receive at Taipei Wedding Banquet", "opt_cake_2": "Receive at Kinmen Engagement", "opt_cake_3": "Mail to my address", "opt_cake_4": "Receive directly from the bride", "opt_cake_5": "Groom's side (Not applicable)", "opt_over_5": "5 or more",
+                "ph_name": "Enter your name", "ph_contact": "Mobile, WhatsApp, Line, Facebook, Email or other SNS", "ph_addr": "Zip code, address, recipient, phone", "ph_other": "Let us know if you need any assistance", "ph_msg": "Write your wishes...",
+                "opt_none": "—", "opt_1_portion": "1", "opt_2_portion": "2", "opt_1_chair": "1", "opt_2_chair": "2", "opt_select": "Please select",
+                "opt_count_no": "Not attending", "opt_other_note": "Other (please note)", "opt_other_chair": "Other (please note)", "opt_other_veg": "Other (please note)",
+                "opt_cake_1": "Receive at Taipei Wedding Banquet", "opt_cake_3": "Mail to my address", "opt_cake_4": "Receive directly from the bride", "opt_cake_5": "Groom's side (not needed)",
                 "gcal_title": "Wong & Wang Wedding - Hoi Ming & Yung-Hsuan",
                 "gcal_details": "We look forward to celebrating this special day with you!",
                 "gcal_location": "Grand Victoria Hotel",
@@ -916,7 +1023,6 @@
         document.getElementById('rsvpForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
-            const currentLang = document.documentElement.lang;
             const originalText = btn.textContent;
             
             btn.disabled = true;
@@ -924,12 +1030,16 @@
 
             const attendElement = document.querySelector('input[name="attend"]:checked');
             const attendVal = attendElement && attendElement.value === 'yes'
-                ? '確定出席（期待與您相見！）Happily attending'
-                : '不克出席（心意收到，獻上祝福）Regretfully unable to attend';
+                ? '確定出席（期待與您相見！）'
+                : '不克出席（心意收到，獻上祝福）';
+
+            const sideElement = document.querySelector('input[name="guestSide"]:checked');
+            const sideVal = sideElement ? sideElement.value : '';
 
             const data = new FormData();
             data.append('entry.73737313', document.getElementById('guestName').value);
             data.append('entry.6119867', document.getElementById('contactInfo').value);
+            if (sideVal) data.append('entry.1887028711', sideVal);
             data.append('entry.20838711', attendVal);
             data.append('entry.1130466163', document.getElementById('guestCount').value);
             
