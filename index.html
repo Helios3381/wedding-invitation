@@ -418,6 +418,85 @@
             .time-box span { font-size: 1.5rem; }
             .time-box small { font-size: 0.8rem; }
         }
+
+        .game-teaser-box {
+            background-color: #FFFFFF;
+            border: 1.5px solid var(--gold-light); 
+            border-radius: 20px;
+            padding: 40px 20px 30px 20px;
+            max-width: 650px;
+            margin: 40px auto 20px auto;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            position: relative;
+        }
+        .game-subtitle {
+            color: var(--gold-primary);
+            font-size: 1.1rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        .game-divider {
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            margin: 0 auto 20px auto;
+        }
+        .game-teaser-box h3 {
+            color: var(--magenta-dark);
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            font-weight: 900;
+        }
+        .game-teaser-box p {
+            color: #666;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin: 0 0 25px 0;
+            font-weight: 500;
+        }
+        .game-btn {
+            display: inline-block;
+            background: var(--gold-gradient);
+            color: var(--magenta-dark);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 900;
+            padding: 14px 40px;
+            border-radius: 40px;
+            letter-spacing: 2px;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+        }
+        .game-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+            color: var(--magenta-dark);
+        }
+        
+        .game-btn.disabled {
+            background: #e0e0e0;
+            color: #888888;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+        .game-btn.disabled:hover {
+            transform: none;
+            box-shadow: none;
+            color: #888888;
+        }
+
+        .game-footer-text {
+            color: #999;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -703,6 +782,18 @@
             <p>我們已收到您的出席意願，<br>期待與您一同歡慶這個特別的日子！</p>
         </div>
 
+        <div class="game-teaser-box">
+            <div class="game-subtitle">WEDDING DAY</div>
+            <div class="game-divider"></div>
+            <h3 data-i18n="game_teaser_title">婚禮遊戲互動專區</h3>
+            <p data-i18n="game_teaser_desc">
+                當天有愛的留言、大冒險、抽卡等遊戲，<br>
+                期待婚禮現場與你同樂！
+            </p>
+            <a href="#" class="game-btn disabled" data-i18n="game_btn" onclick="return false;">進入婚禮遊戲</a>
+            <div class="game-footer-text" data-i18n="game_footer">敬請期待，當天開放 ✨</div>
+        </div>
+
         <div class="footer-text" data-i18n="footer">With love · 誠摯邀請</div>
 
     </section>
@@ -761,7 +852,11 @@
                 "ics_description": "誠摯邀請您與我們一同見證這份喜悅。",
                 "ics_location": "維多麗亞酒店 (台北市中山區敬業四路168號)",
                 "ics_filename": "Wong_Wang_Wedding.ics",
-                "traffic_url": "https://grandvictoria.com.tw/%e4%ba%a4%e9%80%9a%e4%bd%8d%e7%bd%ae/"
+                "traffic_url": "https://grandvictoria.com.tw/%e4%ba%a4%e9%80%9a%e4%bd%8d%e7%bd%ae/",
+                "game_teaser_title": "婚禮遊戲互動專區",
+                "game_teaser_desc": "當天有愛的留言、大冒險、抽卡等遊戲，<br>期待婚禮現場與你同樂！",
+                "game_btn": "進入婚禮遊戲",
+                "game_footer": "敬請期待，當天開放 ✨"
             },
             "ja": {
                 "title": "黄・王 結婚披露宴 | 凱銘 & 詠萱",
@@ -811,7 +906,11 @@
                 "ics_description": "特別な日をご一緒できることを楽しみにしております。",
                 "ics_location": "グランドヴィクトリアホテル (台北市中山区敬業四路168号)",
                 "ics_filename": "Wong_Wang_Wedding_JP.ics",
-                "traffic_url": "https://grandvictoria.com.tw/ja/%E4%BA%A4%E9%80%9A%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/"
+                "traffic_url": "https://grandvictoria.com.tw/ja/%E4%BA%A4%E9%80%9A%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/",
+                "game_teaser_title": "ウェディングゲーム",
+                "game_teaser_desc": "当日は愛のメッセージ、チャレンジ、ガチャなどの<br>ゲームをご用意。結婚式で一緒に盛り上がりましょう！",
+                "game_btn": "ウェディングゲームをプレイする",
+                "game_footer": "お楽しみに！当日公開予定です ✨"
             },
             "en": {
                 "title": "Wong & Wang Wedding | Hoi Ming & Yung-Hsuan",
@@ -861,7 +960,11 @@
                 "ics_description": "We look forward to celebrating this special day with you!",
                 "ics_location": "Grand Victoria Hotel (No. 168, Jingye 4th Rd., Zhongshan Dist., Taipei City)",
                 "ics_filename": "Wong_Wang_Wedding_EN.ics",
-                "traffic_url": "https://grandvictoria.com.tw/en/location/"
+                "traffic_url": "https://grandvictoria.com.tw/en/location/",
+                 "game_teaser_title": "Wedding Game Interactive Zone",
+                "game_teaser_desc": "Join us for loving messages, exciting challenges, and card collecting games.<br>We can't wait to have fun with you at the wedding!",
+                "game_btn": "Enter Wedding Game",
+                "game_footer": "Stay tuned, opens on the wedding day ✨"
             }
         };
 
