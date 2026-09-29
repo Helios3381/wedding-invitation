@@ -741,14 +741,13 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="cakeOptionGroup" style="display: none;">
                     <label data-i18n="lbl_cake">領取喜餅的方式</label>
                     <select id="cakeOption">
                         <option value="" data-i18n="opt_select">請選擇</option>
                         <option value="台北結婚喜宴現場領取" data-i18n="opt_cake_1">台北結婚喜宴現場領取</option>
                         <option value="郵寄到府" data-i18n="opt_cake_3">郵寄到府</option>
                         <option value="預約新娘本人領取" data-i18n="opt_cake_4">預約新娘本人領取</option>
-                        <option value="我是新郎親友" data-i18n="opt_cake_5">我是新郎親友</option>
                     </select>
                 </div>
 
@@ -837,7 +836,7 @@
                 "ph_name": "請輸入您的姓名", "ph_contact": "手機電話、WhatsApp、Line、Facebook、Email 或其他 SNS", "ph_addr": "郵遞區號、收件地址、收件人、連絡電話", "ph_other": "有其他需要協助的地方，請告訴我們", "ph_msg": "寫下您的祝福...",
                 "opt_none": "—", "opt_1_portion": "1 份", "opt_2_portion": "2 份", "opt_1_chair": "1 張", "opt_2_chair": "2 張", "opt_select": "請選擇",
                 "opt_count_no": "不克出席", "opt_other_note": "其他請備註", "opt_other_chair": "其他請備註", "opt_other_veg": "其他請備註",
-                "opt_cake_1": "台北結婚喜宴現場領取", "opt_cake_3": "郵寄到府", "opt_cake_4": "預約新娘本人領取", "opt_cake_5": "我是新郎親友",
+                "opt_cake_1": "台北結婚喜宴現場領取", "opt_cake_3": "郵寄到府", "opt_cake_4": "預約新娘本人領取",
                 "gcal_title": "黃王府囍宴 - 凱銘與詠萱婚禮",
                 "gcal_details": "誠摯邀請您與我們一同見證這份喜悅。",
                 "gcal_location": "維多麗亞酒店",
@@ -891,7 +890,7 @@
                 "ph_name": "お名前を入力してください", "ph_contact": "携帯・Line・Facebook・Email など", "ph_addr": "郵便番号・住所・宛名・電話番号", "ph_other": "お手伝いが必要なことがあればお知らせください", "ph_msg": "メッセージをご記入ください...",
                 "opt_none": "—", "opt_1_portion": "1 食", "opt_2_portion": "2 食", "opt_1_chair": "1 脚", "opt_2_chair": "2 脚", "opt_select": "選択してください",
                 "opt_count_no": "欠席", "opt_other_note": "その他（備考に記入）", "opt_other_chair": "その他（備考に記入）", "opt_other_veg": "その他（備考に記入）",
-                "opt_cake_1": "台北披露宴会場で受け取る", "opt_cake_3": "郵送", "opt_cake_4": "新婦から直接受け取る", "opt_cake_5": "新郎側のため不要",
+                "opt_cake_1": "台北披露宴会場で受け取る", "opt_cake_3": "郵送", "opt_cake_4": "新婦から直接受け取る",
                 "gcal_title": "黄・王 披露宴 - 凱銘 & 詠萱 結婚式",
                 "gcal_details": "特別な日をご一緒できることを楽しみにしております。",
                 "gcal_location": "グランドヴィクトリアホテル",
@@ -908,7 +907,7 @@
             "en": {
                 "title": "Wong & Wang Wedding | Hoi Ming & Yung Hsuan",
                 "env_title": "Wedding Banquet",
-                "env_names": "Hoi Ming <span class='heart-beat'>♥</span> Yung Hsuan",
+                "env_names": "Hoi Ming<span class='heart-beat'>♥</span>Yung Hsuan",
                 "env_hint": "Tap the wax seal to open",
                 "hero_title": "WEDDING BANQUET",
                 "hero_names": "Hoi Ming<br><span class='heart-beat'>♥</span><br>Yung Hsuan",
@@ -945,7 +944,7 @@
                 "ph_name": "Enter your name", "ph_contact": "Mobile, WhatsApp, Line, Facebook, Email or other SNS", "ph_addr": "Zip code, address, recipient, phone", "ph_other": "Let us know if you need any assistance", "ph_msg": "Write your wishes...",
                 "opt_none": "—", "opt_1_portion": "1", "opt_2_portion": "2", "opt_1_chair": "1", "opt_2_chair": "2", "opt_select": "Please select",
                 "opt_count_no": "Not attending", "opt_other_note": "Other (please note)", "opt_other_chair": "Other (please note)", "opt_other_veg": "Other (please note)",
-                "opt_cake_1": "Receive at Taipei Wedding Banquet", "opt_cake_3": "Mail to my address", "opt_cake_4": "Receive directly from the bride", "opt_cake_5": "Groom's side (not needed)",
+                "opt_cake_1": "Receive at Taipei Wedding Banquet", "opt_cake_3": "Mail to my address", "opt_cake_4": "Receive directly from the bride",
                 "gcal_title": "Wong & Wang Wedding - Hoi Ming & Yung Hsuan",
                 "gcal_details": "We look forward to celebrating this special day with you!",
                 "gcal_location": "Grand Victoria Hotel",
@@ -1006,6 +1005,20 @@
         updateGoogleCalendarLink('zh-TW');
         updateTrafficLink('zh-TW');
         
+        function updateCakeOptionVisibility() {
+        const selectedSide = document.querySelector('input[name="guestSide"]:checked');
+        const cakeOptionGroup = document.getElementById('cakeOptionGroup');
+
+        if (!cakeOptionGroup) return;
+
+         if (selectedSide && selectedSide.value === '新娘') {
+            cakeOptionGroup.style.display = 'block';
+        } else {
+            cakeOptionGroup.style.display = 'none';
+            document.getElementById('cakeOption').value = '';
+        }
+}
+
         function scrollToTop(e) {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1174,6 +1187,11 @@
                 btn.textContent = originalText;
             });
         });
+
+        document.querySelectorAll('input[name="guestSide"]').forEach(radio => {
+            radio.addEventListener('change', updateCakeOptionVisibility);
+        });
+        updateCakeOptionVisibility();
     </script>
 </body>
 </html>
