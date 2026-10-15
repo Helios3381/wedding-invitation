@@ -12,7 +12,7 @@
     <style>
         :root {
             --pink-bg: #FFF5F7;        
-            --env-body: #D82B4B;       
+            --env-body: #D82B4B;      
             --env-flap-side: #E63956;  
             --env-flap-bottom: #D12443;
             --env-flap-top: #ED4560;   
@@ -23,7 +23,6 @@
             --gold-gradient: linear-gradient(135deg, #FFF3C4 0%, #D4AF37 50%, #AA7C11 100%);
             --white-card: #FFFAFA;     
         }
-
         body {
             margin: 0;
             padding: 0;
@@ -40,7 +39,6 @@
             line-height: 1.8;
             overflow-x: hidden;
         }
-
         .lang-switcher {
             position: fixed;
             top: 15px;
@@ -64,7 +62,6 @@
             cursor: pointer;
             font-family: 'Noto Sans TC', sans-serif;
         }
-
         .back-to-top {
             position: fixed;
             bottom: 25px;
@@ -101,7 +98,6 @@
             font-family: 'Kaiti TC', 'BiauKai', 'DFKai-SB', 'STKaiti', 'AR PL UKai TW', serif;
             font-weight: bold;
         }
-
         .gradient-title {
             background: linear-gradient(135deg, #D81B60, #FF708C, #D4AF37, #D81B60);
             background-size: 300% 300%;
@@ -115,7 +111,6 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
         .heart-beat {
             display: inline-block;
             color: #E63956;
@@ -129,7 +124,6 @@
             42% { transform: scale(1.3); }
             70% { transform: scale(1); }
         }
-
         #envelope-wrapper {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle, #fff0f3 0%, #ffd1dc 100%);
@@ -137,53 +131,43 @@
             justify-content: center; align-items: center;
             transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
         }
-
         .envelope-container {
             position: relative; width: 360px; height: 250px; perspective: 1400px; 
             filter: drop-shadow(0 25px 40px rgba(136, 14, 79, 0.25));
         }
-
         .envelope-body {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--env-body); border: 2px solid var(--gold-primary);
             border-radius: 6px; z-index: 1;
         }
-
         .envelope-letter {
             position: absolute; top: 15px; left: 15px; right: 15px; bottom: 15px;
             z-index: 2; perspective: 1000px; transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
         }
-
         .card-inner {
             position: relative; width: 100%; height: 100%;
             transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); transform-style: preserve-3d;
         }
-
         .card-front, .card-back {
             position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
             background-color: var(--white-card); border: 1px solid var(--gold-primary);
             box-shadow: inset 0 0 0 4px var(--white-card), inset 0 0 0 6px var(--gold-primary);
             border-radius: 6px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-sizing: border-box; overflow: hidden;
         }
-
         .card-front img { width: calc(100% - 16px); height: calc(100% - 16px); object-fit: cover; border-radius: 4px; }
         .card-back { transform: rotateY(180deg); }
-
         .card-back .cute-xi { font-size: 3rem; color: var(--magenta-primary); margin-bottom: 5px; font-weight: 900; font-family: 'Noto Serif TC', serif; line-height: 1; }
         .card-back .title { font-size: 2.2rem; margin-bottom: 5px; letter-spacing: 2px; }
         .card-back .names { font-size: 2.2rem; color: var(--magenta-primary); letter-spacing: 2px; }
         .card-back .names .heart-beat { font-size: 1.8rem; margin: 0 5px; }
-
         .envelope-front {
             position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
             z-index: 3; pointer-events: none; border-radius: 6px; overflow: hidden;
         }
-
         .envelope-flap {
             position: absolute; top: 0; left: 0; width: 100%; height: 160px;
             transform-origin: top; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); z-index: 4; filter: drop-shadow(0 5px 8px rgba(0,0,0,0.15));
         }
-
         .envelope-seal {
             position: absolute; top: 140px; left: 50%; transform: translate(-50%, -50%);
             width: 85px; height: 85px; background: var(--gold-gradient);
@@ -193,7 +177,6 @@
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6), inset 0 2px 5px rgba(255,255,255,0.9), inset 0 -3px 5px rgba(0,0,0,0.2);
             transition: transform 0.2s, opacity 0.3s; animation: seal-pulse 2s infinite; 
         }
-
         .envelope-seal:hover { transform: translate(-50%, -50%) scale(1.08); }
         
         @keyframes seal-pulse {
@@ -201,11 +184,9 @@
             70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0), inset 0 2px 5px rgba(255,255,255,0.9); }
             100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0), inset 0 2px 5px rgba(255,255,255,0.9); }
         }
-
         .envelope-hint { margin-top: 50px; color: var(--magenta-primary); font-size: 1.2rem; letter-spacing: 3px; font-weight: 700; }
         #confetti-container { position: absolute; top: 140px; left: 50%; width: 1px; height: 1px; z-index: 6; pointer-events: none; }
         .confetti-xi { position: absolute; font-family: 'Noto Serif TC', serif; font-weight: bold; user-select: none; opacity: 0; }
-
         #falling-hearts-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9998; overflow: hidden; }
         .falling-heart {
             position: absolute; top: -10vh;
@@ -215,7 +196,6 @@
         }
         @keyframes fall { 0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(110vh) rotate(180deg); opacity: 0; } }
         @keyframes sway { 0% { margin-left: -25px; } 100% { margin-left: 25px; } }
-
         .hero {
             position: relative; padding: 80px 20px 50px 20px; border: 4px solid var(--white-card); border-radius: 40px;
             margin: 20px; background-color: rgba(255, 255, 255, 0.85); box-shadow: 0 10px 30px rgba(216, 27, 96, 0.08); backdrop-filter: blur(5px);
@@ -230,7 +210,6 @@
         .time-box { background: var(--white-card); padding: 12px 10px; border-radius: 15px; min-width: 65px; border: 2px solid var(--pink-bg); }
         .time-box span { display: block; font-size: 2rem; font-weight: 900; color: var(--magenta-primary); }
         .time-box small { font-size: 0.9rem; color: #888; font-weight: bold; }
-
         .story-illustration { margin: 30px auto 10px auto; max-width: 100%; display: inline-block; }
         .flight-path {
             font-size: 2.2rem; font-weight: 900; letter-spacing: 8px; font-family: 'Noto Sans TC', sans-serif;
@@ -246,8 +225,7 @@
             background: linear-gradient(135deg, #FF4B2B, #FF416C, #F7B733, #FF4B2B); background-size: 300% 300%;
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient-shift 3s ease infinite;
             filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.8)); white-space: nowrap; 
-}
-
+        }
         .gallery-section { padding: 30px 0; }
         .gallery-section h2 { font-size: 1.8rem; font-weight: 900; color: var(--magenta-primary); letter-spacing: 4px; margin-bottom: 10px; }
         .scroll-hint { font-size: 0.9rem; color: var(--magenta-dark); letter-spacing: 2px; opacity: 0.7; margin-bottom: 20px; animation: pulse 2.5s infinite; }
@@ -265,7 +243,6 @@
         .polaroid:active { transform: scale(0.98); }
         .polaroid img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
         .polaroid.show-full img { object-fit: contain; background-color: var(--white-card); }
-
         .content-section {
             background-color: rgba(255, 255, 255, 0.95); color: var(--magenta-dark); padding: 50px 20px;
             margin: 20px; border-radius: 30px; border: 4px solid var(--white-card); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
@@ -288,7 +265,6 @@
             50% { transform: scale(1.15); box-shadow: 0 0 0 10px rgba(216, 27, 96, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(216, 27, 96, 0); }
         }
-
         .info-card { padding: 15px; font-size: 1.15rem; line-height: 2.2; font-weight: 500; }
         .info-card strong { color: var(--magenta-primary); font-weight: 900; }
         .info-divider { border: 0; border-top: 2px solid var(--pink-bg); margin: 25px 0; }
@@ -299,7 +275,6 @@
             padding: 14px; border-radius: 30px; text-decoration: none; font-size: 1.1rem; font-weight: 900; cursor: pointer; transition: all 0.3s ease;
         }
         .calendar-btn:hover { background-color: var(--gold-primary); color: var(--white-card); }
-
         .wedding-form {
             background-color: var(--white-card); color: var(--magenta-dark); max-width: 650px; margin: 40px auto 10px auto;
             padding: 40px 25px; border-radius: 20px; border: 2px solid var(--gold-light); text-align: left;
@@ -321,7 +296,6 @@
         .checkbox-label {
             background: var(--pink-bg); padding: 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px; cursor: pointer; border: 1px solid var(--gold-light); font-weight: bold; color: var(--magenta-dark); font-size: 0.95rem;
         }
-
         .submit-btn {
             background-color: var(--env-body); color: var(--white-card); border: none; width: 100%; padding: 16px;
             font-size: 1.3rem; font-weight: 900; border-radius: 40px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; margin-top: 10px; letter-spacing: 4px; box-shadow: 0 8px 20px rgba(216, 27, 96, 0.3); border: 2px solid var(--white-card);
@@ -333,19 +307,23 @@
             border-radius: 20px; border: 2px solid var(--gold-primary); max-width: 650px; margin: 30px auto; font-size: 1.4rem; font-weight: bold; text-align: center; box-shadow: 0 10px 25px rgba(216, 27, 96, 0.1);
         }
         .success-box p { font-size: 1rem; color: #666; font-weight: normal; margin-top: 10px; line-height: 1.6; }
-
         .footer-text {
             text-align: center; color: #888; font-size: 1rem; margin: 30px 0 10px 0;
             letter-spacing: 3px; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: bold;
         }
-
-
         .kinmen-box {
             background: linear-gradient(135deg, #FFF5F7 0%, #FFF0F3 100%);
             border: 1.5px solid var(--gold-light);
             border-radius: 12px;
             padding: 16px 18px;
             text-align: left;
+        }
+        .greyed-out-section {
+            opacity: 0.55;
+            background: #f0f0f0 !important;
+            border-color: #dcdcdc !important;
+            filter: grayscale(100%);
+            pointer-events: none;
         }
         .kinmen-title {
             font-weight: 900;
@@ -405,7 +383,6 @@
             margin-bottom: 28px !important;
             border: 1px dashed var(--gold-light);
         }
-
         @media (max-width: 768px) {
             .hero h1 { font-size: 4rem; }
             .hero-title { font-size: 2rem; }
@@ -418,7 +395,6 @@
             .time-box span { font-size: 1.5rem; }
             .time-box small { font-size: 0.8rem; }
         }
-
         .game-teaser-box {
             background-color: #FFFFFF;
             border: 1.5px solid var(--gold-light); 
@@ -490,7 +466,6 @@
             box-shadow: none;
             color: #888888;
         }
-
         .game-footer-text {
             color: #999;
             font-size: 0.95rem;
@@ -500,7 +475,6 @@
     </style>
 </head>
 <body>
-
     <div class="lang-switcher">
         <select id="langSelect" onchange="changeLanguage(this.value)">
             <option value="zh-TW" selected>🇭🇰🇹🇼繁體中文</option>
@@ -508,11 +482,8 @@
             <option value="en">🇬🇧🇺🇸English</option>
         </select>
     </div>
-
     <a href="#" class="back-to-top" id="backToTopBtn" onclick="scrollToTop(event)">Top</a>
-
     <div id="falling-hearts-container"></div>
-
     <div id="envelope-wrapper">
         <div class="envelope-container">
             <div class="envelope-body"></div>
@@ -577,7 +548,6 @@
         </div>
         <div class="envelope-hint" id="envelope-hint" data-i18n="env_hint">點擊封蠟章開啟喜帖</div>
     </div>
-
     <header class="hero">
         <div class="hero-content">
             <div class="hero-title calligraphy-font gradient-title" data-i18n="hero_title">黃 王 府 囍 宴</div>
@@ -599,7 +569,6 @@
             </div>
         </div>
     </header>
-
     <div class="gallery-section">
         <h2 data-i18n="gallery_title">相愛拾光</h2>
         <div class="scroll-hint" data-i18n="gallery_hint">← 左右滑動翻閱 →</div>
@@ -610,7 +579,6 @@
             <div class="carousel-item"><div class="polaroid"><img src="wedding-photo-4.jpg" alt="Photo 4" loading="lazy" decoding="async"></div></div>
         </div>
     </div>
-
     <section class="content-section">
         <div class="calendar-box">
             <div class="cal-month" data-i18n="cal_month">2027 年 1 月</div>
@@ -621,7 +589,6 @@
                 <div class="cal-date">2</div><div class="cal-date">3</div><div class="cal-date">4</div><div class="cal-date">5</div><div class="cal-date">6</div><div class="cal-date">7</div><div class="cal-date">8</div><div class="cal-date">9</div>
             </div>
         </div>
-
         <div class="info-card">
             <p style="margin-bottom: 5px;"><strong data-i18n="info_couple_title">【 喜 結 良 緣 】</strong></p>
             <p style="margin: 0;" data-i18n="info_couple">新郎：黃凱銘<br>新娘：王詠萱</p>
@@ -634,9 +601,9 @@
                 國曆：2027 年 1 月 1 日 (五)<br>
                 農曆：丙午年 十一月廿四<br>
                 11:30 迎賓入席 / 12:30 準時開席<br><br>
-                <strong>維多麗亞酒店<br>Grand Victoria Hotel</strong><br>台北市中山區敬業四路168號
+                <strong>維多麗亞酒店 Grand Victoria Hotel</strong><br>
+                台北市中山區敬業四路168號
             </p>
-            
             <hr class="info-divider">
             <p style="margin-bottom: 5px;"><strong data-i18n="info_traffic_title">【 交 通 資 訊 】</strong></p>
             <p style="margin: 0; font-size: 1rem; line-height: 1.8;" data-i18n="info_traffic">
@@ -644,32 +611,28 @@
                 🚗 飯店備有地下停車場，賓客享免費停車 6 小時
             </p>
         </div>
-
         <div class="btn-group">
             <a href="https://grandvictoria.com.tw/%e4%ba%a4%e9%80%9a%e4%bd%8d%e7%bd%ae/" id="btnTraffic" target="_blank" class="calendar-btn" data-i18n="btn_traffic">官網交通與停車指南</a>
             <a href="#" id="btnGcal" target="_blank" class="calendar-btn" data-i18n="btn_gcal">加入 Google 行事曆</a>
             <button onclick="downloadICS()" class="calendar-btn" style="font-family: inherit;" data-i18n="btn_acal">下載 Apple 行事曆（請使用Safari瀏覽器開啟）</button>
         </div>
-
-                <div class="wedding-form" id="formWrapper">
+        <div class="wedding-form" id="formWrapper">
             <h3 data-i18n="form_title">出席意願調查</h3>
             <div class="form-desc" data-i18n="form_desc">
                 為了方便統計桌數與安排座位，懇請您於 <strong>115 年 11 月 1 日前</strong> 完成此表單<br>
                 期待與您一同分享這份喜悅！<br>
                 <span style="display:block; margin-top:10px; font-size:0.88rem; color:#888; line-height:1.5;">🎉 溫馨提醒：若送出後需要更改，歡迎重新填寫，我們以最新一份為準</span>
             </div>
-
             <form id="rsvpForm">
+                <!-- 基本資料 -->
                 <div class="form-group">
                     <label data-i18n="lbl_name">賓客姓名 <span>*</span></label>
                     <input type="text" id="guestName" required data-i18n-placeholder="ph_name" placeholder="請輸入您的姓名">
                 </div>
-
                 <div class="form-group">
-                    <label data-i18n="lbl_contact">聯絡方式（擇一填寫） <span>*</span></label>
+                    <label data-i18n="lbl_contact">聯絡方式 <span>*</span></label>
                     <input type="text" id="contactInfo" required data-i18n-placeholder="ph_contact" placeholder="手機電話、WhatsApp、Line、Facebook、Email 或其他 SNS">
                 </div>
-
                 <div class="form-group">
                     <label data-i18n="lbl_side">誰的親朋好友 <span>*</span></label>
                     <div class="radio-group">
@@ -683,7 +646,6 @@
                         </label>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label data-i18n="lbl_attend">是否出席婚宴 <span>*</span></label>
                     <div class="radio-group">
@@ -695,21 +657,25 @@
                             <input type="radio" name="attend" value="no">
                             <span data-i18n="opt_attend_no">不克出席（心意收到，獻上祝福）</span>
                         </label>
+                        <label class="radio-label">
+                            <input type="radio" name="attend" value="no_gift">
+                            <span data-i18n="opt_attend_no_gift">不克出席（禮到人不到）</span>
+                        </label>
                     </div>
                 </div>
-
+                <!-- 金門文定 -->
                 <div class="form-group">
-                    <div class="kinmen-box">
+                    <div class="kinmen-box greyed-out-section">
                         <div class="kinmen-title" data-i18n="opt_kinmen_title">【金門文定儀式】僅訂於 115 年 10 月 11 日（星期日）新娘詠萱家（泗湖 55 號）</div>
                         <div class="kinmen-hint" data-i18n="opt_kinmen_hint">🎉 誠摯歡迎想湊熱鬧的親友來觀禮！記得提早買機票與安排住宿喔～</div>
                         <label class="checkbox-label kinmen-check">
-                            <input type="checkbox" id="kinmenCheck" value="1">
+                            <input type="checkbox" id="kinmenCheck" value="1" disabled>
                             <span data-i18n="opt_kinmen">我要觀禮</span>
                         </label>
                     </div>
                 </div>
-
-                <div class="form-group">
+                <!-- 出席細節 -->
+                <div class="form-group" id="groupGuestCount">
                     <label data-i18n="lbl_count">出席總人數（含您自己）</label>
                     <select id="guestCount">
                         <option value="1">1</option>
@@ -720,8 +686,7 @@
                         <option value="不克出席" data-i18n="opt_count_no">不克出席</option>
                     </select>
                 </div>
-
-                <div class="form-group">
+                <div class="form-group" id="groupBabyChair">
                     <label data-i18n="lbl_chair">是否需要為年幼孩童準備嬰兒椅（無幼童免填）</label>
                     <select id="babyChair">
                         <option value="" data-i18n="opt_none">—</option>
@@ -730,8 +695,7 @@
                         <option value="其他請備住" data-i18n="opt_other_chair">其他請備註</option>
                     </select>
                 </div>
-
-                <div class="form-group">
+                <div class="form-group" id="groupVegCount">
                     <label data-i18n="lbl_veg">是否需要素食餐食（葷食免填）</label>
                     <select id="vegCount">
                         <option value="" data-i18n="opt_none">—</option>
@@ -740,60 +704,53 @@
                         <option value="其他請備住" data-i18n="opt_other_veg">其他請備註</option>
                     </select>
                 </div>
-
-                <div class="form-group" id="cakeOptionGroup" style="display: none;">
-                    <label data-i18n="lbl_cake">領取喜餅的方式（已領取免填）</label>
+                <!-- 喜餅 -->
+                <div class="form-group" id="groupCakeOption">
+                    <label data-i18n="lbl_cake">領取喜餅的方式</label>
                     <select id="cakeOption">
                         <option value="" data-i18n="opt_select">請選擇</option>
                         <option value="台北結婚喜宴現場領取" data-i18n="opt_cake_1">台北結婚喜宴現場領取</option>
                         <option value="郵寄到府" data-i18n="opt_cake_3">郵寄到府</option>
                         <option value="預約新娘本人領取" data-i18n="opt_cake_4">預約新娘本人領取</option>
+                        <option value="我是新郎親友" data-i18n="opt_cake_5">我是新郎親友</option>
                     </select>
                 </div>
-
-                <div class="form-group">
+                <div class="form-group" id="groupShippingAddress">
                     <label data-i18n="lbl_addr">收件地址（選郵寄時請填）</label>
                     <textarea id="shippingAddress" rows="2" data-i18n-placeholder="ph_addr" placeholder="郵遞區號、收件地址、收件人、連絡電話"></textarea>
                 </div>
-
+                <!-- 留言 -->
                 <div class="form-group">
                     <label data-i18n="lbl_msg">給新郎新娘的祝福留言</label>
                     <textarea id="wishesMsg" rows="3" data-i18n-placeholder="ph_msg" placeholder="寫下您的祝福..."></textarea>
                 </div>
-
                 <div class="form-group">
                     <label data-i18n="lbl_other">其他備註</label>
                     <input type="text" id="otherNeed" data-i18n-placeholder="ph_other" placeholder="有其他需要協助的地方，請告訴我們">
                 </div>
-
                 <button type="submit" class="submit-btn" id="submitBtn" data-i18n="btn_submit">囍 送出回覆</button>
             </form>
         </div>
-
         <div id="successBox" class="success-box" data-i18n="success_msg">
             ✨ 感謝您的回覆 ✨
             <p>我們已收到您的出席意願，<br>期待與您一同歡慶這個特別的日子！</p>
         </div>
-
+        
+        <!-- 婚禮遊戲專區預告 -->
         <div class="game-teaser-box">
             <div class="game-subtitle">WEDDING DAY</div>
             <div class="game-divider"></div>
             <h3 data-i18n="game_teaser_title">婚禮遊戲互動專區</h3>
-            <p data-i18n="game_teaser_desc">
-                當天有愛的留言、大冒險、抽卡等遊戲，期待婚禮現場與你同樂！
-            </p>
+            <p data-i18n="game_teaser_desc">當天有愛的留言、大冒險、抽卡等遊戲，<br>期待婚禮現場與你同樂！</p>
             <a href="#" class="game-btn disabled" data-i18n="game_btn" onclick="return false;">進入婚禮遊戲</a>
             <div class="game-footer-text" data-i18n="game_footer">敬請期待，當天開放 ✨</div>
         </div>
-
+        
         <div class="footer-text" data-i18n="footer">With love · 誠摯邀請</div>
-
     </section>
-
     <div style="text-align: center; color: #888; font-size: 0.85rem; padding: 20px 0; font-family: 'Helvetica Neue', Arial, sans-serif;">
         ©2026 Helios Studios All rights reserved.
     </div>
-    
     <script>
         const i18n = {
             "zh-TW": {
@@ -805,7 +762,10 @@
                 "hero_names": "凱銘<br><span class='heart-beat'>♥</span><br>詠萱",
                 "hero_date_solar": "國曆 116 年 1 月 1 日 (五)",
                 "hero_date_lunar": "農曆 丙午年 十一月廿四",
-                "time_days": "天", "time_hours": "時", "time_mins": "分", "time_secs": "秒",
+                "time_days": "天",
+                "time_hours": "時",
+                "time_mins": "分",
+                "time_secs": "秒",
                 "wedding_started": "婚禮進行中！",
                 "gallery_title": "相愛拾光",
                 "gallery_hint": "← 左右滑動翻閱 →",
@@ -816,27 +776,53 @@
                 "info_host_title": "【 主 婚 人 】",
                 "info_host": "男方：黃偉強、馮莉梅<br>女方：王金山、盛惠寶",
                 "info_banquet_title": "【 婚 宴 資 訊 】",
-                "info_banquet_date": "國曆：2027 年 1 月 1 日 (五)<br>農曆：丙午年 十一月廿四<br>11:30 迎賓入席 / 12:30 準時開席<br><br><strong>維多麗亞酒店<br>Grand Victoria Hotel</strong><br>台北市中山區敬業四路168號",
+                "info_banquet_date": "國曆：2027 年 1 月 1 日 (五)<br>農曆：丙午年 十一月廿四<br>11:30 迎賓入席 / 12:30 準時開席<br><br><strong>維多麗亞酒店 Grand Victoria Hotel</strong><br>台北市中山區敬業四路168號",
                 "info_traffic_title": "【 交 通 資 訊 】",
                 "info_traffic": "🚇 捷運劍南路站 3 號出口步行<br>🚗 飯店備有地下停車場，賓客享免費停車 6 小時",
-                "btn_traffic": "官網交通與停車指南", "btn_gcal": "加入 Google 行事曆", "btn_acal": "下載 Apple 行事曆（請使用Safari瀏覽器開啟）",
+                "btn_traffic": "官網交通與停車指南",
+                "btn_gcal": "加入 Google 行事曆",
+                "btn_acal": "下載 Apple 行事曆（請使用Safari瀏覽器開啟）",
                 "form_title": "出席意願調查",
-                "form_desc": "為了方便統計桌數與安排座位，懇請您於 <strong>115 年 11 月 1 日前</strong> 完成此表單<br>期待與您一同分享這份喜悅！<br><span style=\"display:block; margin-top:10px; font-size:0.88rem; color:#888; line-height:1.5;\">🎉 溫馨提醒：若送出後需要更改，歡迎重新填寫，我們以最新一份為準</span>",
-                "lbl_name": "賓客姓名 <span>*</span>", "lbl_contact": "聯絡方式（擇一填寫） <span>*</span>", "lbl_side": "誰的親朋好友 <span>*</span>", "lbl_attend": "是否出席婚宴 <span>*</span>",
-                "opt_side_groom": "新郎", "opt_side_bride": "新娘",
-                "opt_attend_yes": "確定出席（期待與您相見！）", "opt_attend_no": "不克出席（心意收到，獻上祝福）",
-                "lbl_count": "出席總人數（含您自己）", "lbl_veg": "是否需要素食餐食（葷食免填）", "lbl_chair": "是否需要為年幼孩童準備嬰兒椅（無幼童免填）",
+                "form_desc": "為了方便統計桌數與安排座位，懇請您於 <strong>115 年 11 月 1 日前</strong> 完成此表單<br>期待與您一同分享這份喜悅！ — 凱銘 &amp; 詠萱 敬邀<br><span style=\"display:block; margin-top:10px; font-size:0.88rem; color:#888; line-height:1.5;\">🎉 溫馨提醒：若送出後需要更改，歡迎重新填寫，我們以最新一份為準</span>",
+                "lbl_name": "賓客姓名 <span>*</span>",
+                "lbl_contact": "聯絡方式 <span>*</span>",
+                "lbl_side": "誰的親朋好友 <span>*</span>",
+                "lbl_attend": "是否出席婚宴 <span>*</span>",
+                "opt_side_groom": "新郎",
+                "opt_side_bride": "新娘",
+                "opt_attend_yes": "確定出席（期待與您相見！）",
+                "opt_attend_no": "不克出席（心意收到，獻上祝福）",
+                "opt_attend_no_gift": "不克出席（禮到人不到）",
+                "lbl_count": "出席總人數（含您自己）",
+                "lbl_veg": "是否需要素食餐食（葷食免填）",
+                "lbl_chair": "是否需要為年幼孩童準備嬰兒椅（無幼童免填）",
                 "opt_kinmen_title": "【金門文定儀式】僅訂於 115 年 10 月 11 日（星期日）新娘詠萱家（泗湖 55 號）",
                 "opt_kinmen_hint": "🎉 誠摯歡迎想湊熱鬧的親友來觀禮！記得提早買機票與安排住宿喔～",
                 "opt_kinmen": "我要觀禮",
-                "lbl_cake": "領取喜餅的方式（已領取免填）", "lbl_addr": "收件地址（選郵寄時請填）", "lbl_other": "其他備註", "lbl_msg": "給新郎新娘的祝福留言",
+                "lbl_cake": "領取喜餅的方式",
+                "lbl_addr": "收件地址（選郵寄時請填）",
+                "lbl_other": "其他備註",
+                "lbl_msg": "給新郎新娘的祝福留言",
                 "btn_submit": "囍 送出回覆",
                 "success_msg": "✨ 感謝您的回覆 ✨<p>我們已收到您的出席意願，<br>期待與您一同歡慶這個特別的日子！</p>",
                 "footer": "With love · 誠摯邀請",
-                "ph_name": "請輸入您的姓名", "ph_contact": "手機電話、WhatsApp、Line、Facebook、Email 或其他 SNS", "ph_addr": "郵遞區號、收件地址、收件人、連絡電話", "ph_other": "有其他需要協助的地方，請告訴我們", "ph_msg": "寫下您的祝福...",
-                "opt_none": "—", "opt_1_portion": "1 份", "opt_2_portion": "2 份", "opt_1_chair": "1 張", "opt_2_chair": "2 張", "opt_select": "請選擇",
-                "opt_count_no": "不克出席", "opt_other_note": "其他請備註", "opt_other_chair": "其他請備註", "opt_other_veg": "其他請備註",
-                "opt_cake_1": "台北結婚喜宴現場領取", "opt_cake_3": "郵寄到府", "opt_cake_4": "預約新娘本人領取",
+                "ph_name": "請輸入您的姓名",
+                "ph_contact": "手機電話、WhatsApp、Line、Facebook、Email 或其他 SNS",
+                "ph_addr": "郵遞區號、收件地址、收件人、連絡電話",
+                "ph_other": "有其他需要協助的地方，請告訴我們",
+                "ph_msg": "寫下您的祝福...",
+                "opt_none": "—",
+                "opt_1_portion": "1 份", "opt_2_portion": "2 份",
+                "opt_1_chair": "1 張", "opt_2_chair": "2 張",
+                "opt_select": "請選擇",
+                "opt_count_no": "不克出席",
+                "opt_other_note": "其他請備註",
+                "opt_other_chair": "其他請備註",
+                "opt_other_veg": "其他請備註",
+                "opt_cake_1": "台北結婚喜宴現場領取",
+                "opt_cake_3": "郵寄到府",
+                "opt_cake_4": "預約新娘本人領取",
+                "opt_cake_5": "我是新郎親友",
                 "gcal_title": "黃王府囍宴 - 凱銘與詠萱婚禮",
                 "gcal_details": "誠摯邀請您與我們一同見證這份喜悅。",
                 "gcal_location": "維多麗亞酒店",
@@ -846,7 +832,7 @@
                 "ics_filename": "Wong_Wang_Wedding.ics",
                 "traffic_url": "https://grandvictoria.com.tw/%e4%ba%a4%e9%80%9a%e4%bd%8d%e7%bd%ae/",
                 "game_teaser_title": "婚禮遊戲互動專區",
-                "game_teaser_desc": "當天有愛的留言、大冒險、抽卡等遊戲，期待婚禮現場與你同樂！",
+                "game_teaser_desc": "當天有愛的留言、大冒險、抽卡等遊戲，<br>期待婚禮現場與你同樂！",
                 "game_btn": "進入婚禮遊戲",
                 "game_footer": "敬請期待，當天開放 ✨"
             },
@@ -873,24 +859,50 @@
                 "info_banquet_date": "令和9年 1月 1日 (金)<br>旧暦：丙午年 11月24日<br>11:30 受付開始 / 12:30 開宴<br><br><strong>グランドヴィクトリアホテル</strong><br>台北市中山区敬業四路168号",
                 "info_traffic_title": "【 ア ク セ ス 】",
                 "info_traffic": "🚇 MRT剣南路駅 3番出口より徒歩<br>🚗 ホテル地下駐車場あり（ゲスト6時間無料）",
-                "btn_traffic": "公式アクセス・駐車場ガイド", "btn_gcal": "Googleカレンダーに追加", "btn_acal": "Appleカレンダーをダウンロード（Safariで開いてください）",
+                "btn_traffic": "公式アクセス・駐車場ガイド",
+                "btn_gcal": "Googleカレンダーに追加",
+                "btn_acal": "Appleカレンダーをダウンロード（Safariで開いてください）",
                 "form_title": "出欠確認",
                 "form_desc": "お席の準備のため、<strong>2026年 11月 1日</strong>までにご返信をお願いいたします。<br>皆様のご来場をお待ちしております！<br><span style=\"display:block; margin-top:10px; font-size:0.88rem; color:#888; line-height:1.5;\">🎉 送信後に変更が必要な場合は、再度ご記入ください。（最新のものを優先します）</span>",
-                "lbl_name": "お名前 <span>*</span>", "lbl_contact": "ご連絡先（1つだけをご入力ください） <span>*</span>", "lbl_side": "どちらのご友人・ご親族ですか <span>*</span>", "lbl_attend": "ご出欠 <span>*</span>",
-                "opt_side_groom": "新郎", "opt_side_bride": "新婦",
-                "opt_attend_yes": "出席（お会いできるのを楽しみにしています！）", "opt_attend_no": "欠席（心より祝福申し上げます）",
-                "lbl_count": "出席人数（ご自身を含む）", "lbl_veg": "ベジタリアン食は必要ですか（不要な場合は空欄）", "lbl_chair": "お子様用ベビーチェアは必要ですか（不要な場合は空欄）",
+                "lbl_name": "お名前 <span>*</span>",
+                "lbl_contact": "ご連絡先 <span>*</span>",
+                "lbl_side": "どちらのご友人・ご親族ですか <span>*</span>",
+                "lbl_attend": "ご出欠 <span>*</span>",
+                "opt_side_groom": "新郎",
+                "opt_side_bride": "新婦",
+                "opt_attend_yes": "出席（お会いできるのを楽しみにしています！）",
+                "opt_attend_no": "欠席（心より祝福申し上げます）",
+                "opt_attend_no_gift": "欠席（お心遣いのみ）",
+                "lbl_count": "出席人数（ご自身を含む）",
+                "lbl_veg": "ベジタリアン食は必要ですか（不要な場合は空欄）",
+                "lbl_chair": "お子様用ベビーチェアは必要ですか（不要な場合は空欄）",
                 "opt_kinmen_title": "【金門 結納式】2026年10月11日（日）新婦宅（泗湖55号）",
                 "opt_kinmen_hint": "🎉 ご都合が合えばぜひご参加ください！航空券・宿泊は各自でご手配をお願いいたします。",
                 "opt_kinmen": "観礼希望",
-                "lbl_cake": "引き出物のお受け取り方法（受取済みの場合は記入不要）", "lbl_addr": "ご住所（郵送の場合）", "lbl_other": "その他・備考", "lbl_msg": "新郎新婦へのメッセージ",
+                "lbl_cake": "引き出物のお受け取り方法",
+                "lbl_addr": "ご住所（郵送の場合）",
+                "lbl_other": "その他・備考",
+                "lbl_msg": "新郎新婦へのメッセージ",
                 "btn_submit": "囍 送信",
                 "success_msg": "✨ ご返信ありがとうございます ✨<p>ご出欠の確認が取れました。<br>特別な日をご一緒できることを楽しみにしております！</p>",
                 "footer": "With love · 心を込めて",
-                "ph_name": "お名前を入力してください", "ph_contact": "携帯・Line・Facebook・Email など", "ph_addr": "郵便番号・住所・宛名・電話番号", "ph_other": "お手伝いが必要なことがあればお知らせください", "ph_msg": "メッセージをご記入ください...",
-                "opt_none": "—", "opt_1_portion": "1 食", "opt_2_portion": "2 食", "opt_1_chair": "1 脚", "opt_2_chair": "2 脚", "opt_select": "選択してください",
-                "opt_count_no": "欠席", "opt_other_note": "その他（備考に記入）", "opt_other_chair": "その他（備考に記入）", "opt_other_veg": "その他（備考に記入）",
-                "opt_cake_1": "台北披露宴会場で受け取る", "opt_cake_3": "郵送", "opt_cake_4": "新婦から直接受け取る",
+                "ph_name": "お名前を入力してください",
+                "ph_contact": "携帯・Line・Facebook・Email など",
+                "ph_addr": "郵便番号・住所・宛名・電話番号",
+                "ph_other": "お手伝いが必要なことがあればお知らせください",
+                "ph_msg": "メッセージをご記入ください...",
+                "opt_none": "—",
+                "opt_1_portion": "1 食", "opt_2_portion": "2 食",
+                "opt_1_chair": "1 脚", "opt_2_chair": "2 脚",
+                "opt_select": "選択してください",
+                "opt_count_no": "欠席",
+                "opt_other_note": "その他（備考に記入）",
+                "opt_other_chair": "その他（備考に記入）",
+                "opt_other_veg": "その他（備考に記入）",
+                "opt_cake_1": "台北披露宴会場で受け取る",
+                "opt_cake_3": "郵送",
+                "opt_cake_4": "新婦から直接受け取る",
+                "opt_cake_5": "新郎側のため不要",
                 "gcal_title": "黄・王 披露宴 - 凱銘 & 詠萱 結婚式",
                 "gcal_details": "特別な日をご一緒できることを楽しみにしております。",
                 "gcal_location": "グランドヴィクトリアホテル",
@@ -899,18 +911,18 @@
                 "ics_location": "グランドヴィクトリアホテル (台北市中山区敬業四路168号)",
                 "ics_filename": "Wong_Wang_Wedding_JP.ics",
                 "traffic_url": "https://grandvictoria.com.tw/ja/%E4%BA%A4%E9%80%9A%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9/",
-                "game_teaser_title": "ウェディングゲーム",
-                "game_teaser_desc": "当日は愛のメッセージ、チャレンジ、ガチャなどのゲームをご用意。結婚式で一緒に盛り上がりましょう！",
-                "game_btn": "ウェディングゲームをプレイする",
+                "game_teaser_title": "ウェディングゲーム専用コーナー",
+                "game_teaser_desc": "当日は愛のメッセージ、お題チャレンジ、カードガチャなどの<br>ゲームをご用意。結婚式で一緒に盛り上がりましょう！",
+                "game_btn": "ウェディングゲームに参加する",
                 "game_footer": "お楽しみに！当日公開予定です ✨"
             },
             "en": {
-                "title": "Wong & Wang Wedding | Hoi Ming & Yung Hsuan",
+                "title": "Wong & Wang Wedding | Hoi Ming & Yung-Hsuan",
                 "env_title": "Wedding Banquet",
-                "env_names": "Hoi Ming<span class='heart-beat'>♥</span>Yung Hsuan",
+                "env_names": "Hoi Ming <span class='heart-beat'>♥</span> Yung-Hsuan",
                 "env_hint": "Tap the wax seal to open",
                 "hero_title": "WEDDING BANQUET",
-                "hero_names": "Hoi Ming<br><span class='heart-beat'>♥</span><br>Yung Hsuan",
+                "hero_names": "Hoi Ming<br><span class='heart-beat'>♥</span><br>Yung-Hsuan",
                 "hero_date_solar": "Friday, January 1, 2027",
                 "hero_date_lunar": "Lunar: Nov 24, Year of the Horse",
                 "time_days": "Days", "time_hours": "Hours", "time_mins": "Mins", "time_secs": "Secs",
@@ -920,41 +932,67 @@
                 "cal_month": "January 2027",
                 "cal_sun": "Sun", "cal_mon": "Mon", "cal_tue": "Tue", "cal_wed": "Wed", "cal_thu": "Thu", "cal_fri": "Fri", "cal_sat": "Sat",
                 "info_couple_title": "【 THE COUPLE 】",
-                "info_couple": "Groom: Wong Hoi Ming<br>Bride: Wang Yung Hsuan",
+                "info_couple": "Groom: Wong Hoi Ming<br>Bride: Wang Yung-Hsuan",
                 "info_host_title": "【 HOSTED BY 】",
-                "info_host": "Groom's Parents: Wong Wai Keung, Fung Li Mui<br>Bride's Parents: Wang Chin Shan, Sheng Hui Pao",
+                "info_host": "Groom's Parents: Wong Wai Keung, Fung Li Mui<br>Bride's Parents: Wang Chin-Shan, Sheng Hui-Pao",
                 "info_banquet_title": "【 BANQUET INFO 】",
                 "info_banquet_date": "Date: Friday, January 1, 2027<br>Lunar: Nov 24, Year of the Horse<br>11:30 Reception / 12:30 Banquet Starts<br><br><strong>Grand Victoria Hotel</strong><br>No. 168, Jingye 4th Rd., Zhongshan Dist., Taipei City",
                 "info_traffic_title": "【 TRANSPORTATION 】",
                 "info_traffic": "🚇 Walk from MRT Jiannan Rd. Station Exit 3<br>🚗 Complimentary underground parking for 6 hours",
-                "btn_traffic": "Official Traffic & Parking Guide", "btn_gcal": "Add to Google Calendar", "btn_acal": "Download Apple Calendar (Please open it in Safari)",
+                "btn_traffic": "Official Traffic & Parking Guide",
+                "btn_gcal": "Add to Google Calendar",
+                "btn_acal": "Download Apple Calendar (Please open it in Safari)",
                 "form_title": "RSVP",
                 "form_desc": "To help us arrange seating, please complete this form by <strong>November 1, 2026</strong>.<br>We look forward to celebrating with you!<br><span style=\"display:block; margin-top:10px; font-size:0.88rem; color:#888; line-height:1.5;\">🎉 Need to make changes? Simply submit again — we'll use your latest response</span>",
-                "lbl_name": "Guest Name <span>*</span>", "lbl_contact": "Contact Info (Please provide only one preferred contact method) <span>*</span>", "lbl_side": "Whose guest are you? <span>*</span>", "lbl_attend": "Will you attend? <span>*</span>",
-                "opt_side_groom": "Groom", "opt_side_bride": "Bride",
-                "opt_attend_yes": "Yes, attending (Can't wait to see you!)", "opt_attend_no": "Unable to attend (Sending my best wishes)",
-                "lbl_count": "Total guests (including yourself)", "lbl_veg": "Vegetarian meals needed? (leave blank if none)", "lbl_chair": "Baby chairs for young children? (leave blank if none)",
+                "lbl_name": "Guest Name <span>*</span>",
+                "lbl_contact": "Contact Info <span>*</span>",
+                "lbl_side": "Whose guest are you? <span>*</span>",
+                "lbl_attend": "Will you attend? <span>*</span>",
+                "opt_side_groom": "Groom",
+                "opt_side_bride": "Bride",
+                "opt_attend_yes": "Yes, attending (Can't wait to see you!)",
+                "opt_attend_no": "Unable to attend (Sending my best wishes)",
+                "opt_attend_no_gift": "Unable to attend (Gift sent in lieu of presence)",
+                "lbl_count": "Total guests (including yourself)",
+                "lbl_veg": "Vegetarian meals needed? (leave blank if none)",
+                "lbl_chair": "Baby chairs for young children? (leave blank if none)",
                 "opt_kinmen_title": "【Kinmen Engagement】Oct 11, 2026 (Sun) at Bride's home (Sihu 55)",
                 "opt_kinmen_hint": "🎉 You're warmly welcome to join! Please arrange flights & accommodation in advance",
                 "opt_kinmen": "I will attend",
-                "lbl_cake": "How to receive the bridal cakes (Already received — no need to fill in)", "lbl_addr": "Shipping address (if choosing mail)", "lbl_other": "Other notes", "lbl_msg": "Message for the Bride & Groom",
+                "lbl_cake": "How to receive the wedding favor",
+                "lbl_addr": "Shipping address (if choosing mail)",
+                "lbl_other": "Other notes",
+                "lbl_msg": "Message for the Bride & Groom",
                 "btn_submit": "囍 Submit RSVP",
                 "success_msg": "✨ Thank You ✨<p>We have received your response.<br>Looking forward to celebrating this special day with you!</p>",
                 "footer": "With love · You are cordially invited",
-                "ph_name": "Enter your name", "ph_contact": "Mobile, WhatsApp, Line, Facebook, Email or other SNS", "ph_addr": "Zip code, address, recipient, phone", "ph_other": "Let us know if you need any assistance", "ph_msg": "Write your wishes...",
-                "opt_none": "—", "opt_1_portion": "1", "opt_2_portion": "2", "opt_1_chair": "1", "opt_2_chair": "2", "opt_select": "Please select",
-                "opt_count_no": "Not attending", "opt_other_note": "Other (please note)", "opt_other_chair": "Other (please note)", "opt_other_veg": "Other (please note)",
-                "opt_cake_1": "Receive at Taipei Wedding Banquet", "opt_cake_3": "Mail to my address", "opt_cake_4": "Receive directly from the bride",
-                "gcal_title": "Wong & Wang Wedding - Hoi Ming & Yung Hsuan",
+                "ph_name": "Enter your name",
+                "ph_contact": "Mobile, WhatsApp, Line, Facebook, Email or other SNS",
+                "ph_addr": "Zip code, address, recipient, phone",
+                "ph_other": "Let us know if you need any assistance",
+                "ph_msg": "Write your wishes...",
+                "opt_none": "—",
+                "opt_1_portion": "1", "opt_2_portion": "2",
+                "opt_1_chair": "1", "opt_2_chair": "2",
+                "opt_select": "Please select",
+                "opt_count_no": "Not attending",
+                "opt_other_note": "Other (please note)",
+                "opt_other_chair": "Other (please note)",
+                "opt_other_veg": "Other (please note)",
+                "opt_cake_1": "Receive at Taipei Wedding Banquet",
+                "opt_cake_3": "Mail to my address",
+                "opt_cake_4": "Receive directly from the bride",
+                "opt_cake_5": "Groom's side (not needed)",
+                "gcal_title": "Wong & Wang Wedding - Hoi Ming & Yung-Hsuan",
                 "gcal_details": "We look forward to celebrating this special day with you!",
                 "gcal_location": "Grand Victoria Hotel",
-                "ics_summary": "Wong & Wang Wedding Banquet | Hoi Ming & Yung Hsuan",
+                "ics_summary": "Wong & Wang Wedding Banquet | Hoi Ming & Yung-Hsuan",
                 "ics_description": "We look forward to celebrating this special day with you!",
                 "ics_location": "Grand Victoria Hotel (No. 168, Jingye 4th Rd., Zhongshan Dist., Taipei City)",
                 "ics_filename": "Wong_Wang_Wedding_EN.ics",
                 "traffic_url": "https://grandvictoria.com.tw/en/location/",
-                 "game_teaser_title": "Wedding Game Interactive Zone",
-                "game_teaser_desc": "Join us for loving messages, exciting challenges, and card collecting games. We can't wait to have fun with you at the wedding!",
+                "game_teaser_title": "Wedding Game Interactive Zone",
+                "game_teaser_desc": "Join us for loving messages, exciting challenges, and card collecting games.<br>We can't wait to have fun with you at the wedding!",
                 "game_btn": "Enter Wedding Game",
                 "game_footer": "Stay tuned, opens on the wedding day ✨"
             }
@@ -967,70 +1005,38 @@
             const location = encodeURIComponent(info.gcal_location);
             const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=20270101T033000Z/20270101T073000Z&details=${details}&location=${location}`;
             const btn = document.getElementById('btnGcal');
-            if (btn) {
-                btn.href = url;
-            }
+            if (btn) { btn.href = url; }
         }
-
         function updateTrafficLink(lang) {
             const info = i18n[lang] || i18n["zh-TW"];
             const btn = document.getElementById('btnTraffic');
-            if (btn && info.traffic_url) {
-                btn.href = info.traffic_url;
-            }
+            if (btn && info.traffic_url) { btn.href = info.traffic_url; }
         }
-
         function changeLanguage(lang) {
             document.documentElement.lang = lang;
             document.title = i18n[lang]["title"];
-
+            
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (i18n[lang][key]) {
-                    el.innerHTML = i18n[lang][key];
-                }
+                if (i18n[lang][key]) { el.innerHTML = i18n[lang][key]; }
             });
-
             document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
                 const key = el.getAttribute('data-i18n-placeholder');
-                if (i18n[lang][key]) {
-                    el.placeholder = i18n[lang][key];
-                }
+                if (i18n[lang][key]) { el.placeholder = i18n[lang][key]; }
             });
-
             updateGoogleCalendarLink(lang);
             updateTrafficLink(lang);
         }
-
         updateGoogleCalendarLink('zh-TW');
         updateTrafficLink('zh-TW');
-        
-        function updateCakeOptionVisibility() {
-        const selectedSide = document.querySelector('input[name="guestSide"]:checked');
-        const cakeOptionGroup = document.getElementById('cakeOptionGroup');
-
-        if (!cakeOptionGroup) return;
-
-         if (selectedSide && selectedSide.value === '新娘') {
-            cakeOptionGroup.style.display = 'block';
-        } else {
-            cakeOptionGroup.style.display = 'none';
-            document.getElementById('cakeOption').value = '';
-        }
-}
 
         function scrollToTop(e) {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
         window.addEventListener('scroll', function() {
             const topBtn = document.getElementById('backToTopBtn');
-            if (window.scrollY > 300) {
-                topBtn.classList.add('show');
-            } else {
-                topBtn.classList.remove('show');
-            }
+            if (window.scrollY > 300) { topBtn.classList.add('show'); } else { topBtn.classList.remove('show'); }
         });
 
         function startFallingHearts() {
@@ -1052,12 +1058,12 @@
 
         function createConfetti() {
             const container = document.getElementById('confetti-container');
-            const colors = ['#D81B60', '#D4AF37', '#FFB6C1', '#880E4F']; 
-            const particleCount = 50; 
+            const colors = ['#D81B60', '#D4AF37', '#FFB6C1', '#880E4F'];
+            const particleCount = 50;
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.innerHTML = '囍';
-                particle.className = 'confetti-xi'; 
+                particle.className = 'confetti-xi';
                 particle.style.color = colors[Math.floor(Math.random() * colors.length)];
                 particle.style.fontSize = (Math.random() * 1.5 + 1.2) + 'rem';
                 const angle = Math.random() * Math.PI * 2;
@@ -1070,7 +1076,11 @@
                     { transform: 'translate(0, 0) rotate(0deg) scale(0)', opacity: 1 },
                     { transform: `translate(${tx}px, ${ty}px) rotate(${rot}deg) scale(1)`, opacity: 1, offset: 0.7 },
                     { transform: `translate(${tx}px, ${ty + 80}px) rotate(${rot + 60}deg) scale(0.8)`, opacity: 0 }
-                ], { duration: 1500 + Math.random() * 800, easing: 'cubic-bezier(0.15, 0.85, 0.35, 1)', fill: 'forwards' });
+                ], {
+                    duration: 1500 + Math.random() * 800,
+                    easing: 'cubic-bezier(0.15, 0.85, 0.35, 1)',
+                    fill: 'forwards'
+                });
             }
         }
 
@@ -1081,14 +1091,26 @@
             const flap = document.getElementById('envelope-flap');
             const letter = document.getElementById('envelope-letter');
             const cardInner = document.getElementById('card-inner');
-
-            seal.style.opacity = '0'; seal.style.pointerEvents = 'none'; hint.style.opacity = '0';
+            
+            seal.style.opacity = '0';
+            seal.style.pointerEvents = 'none';
+            hint.style.opacity = '0';
             createConfetti();
-            flap.style.transform = 'rotateX(180deg)'; flap.style.zIndex = '1';
-
-            setTimeout(() => { letter.style.transform = 'translateY(-140px) scale(1.05)'; letter.style.zIndex = '6'; }, 500);
-            setTimeout(() => { cardInner.style.transform = 'rotateY(180deg)'; }, 2500);
-            setTimeout(() => { wrapper.style.opacity = '0'; wrapper.style.visibility = 'hidden'; startFallingHearts(); }, 4500);
+            flap.style.transform = 'rotateX(180deg)';
+            flap.style.zIndex = '1';
+            
+            setTimeout(() => {
+                letter.style.transform = 'translateY(-140px) scale(1.05)';
+                letter.style.zIndex = '6';
+            }, 500);
+            setTimeout(() => {
+                cardInner.style.transform = 'rotateY(180deg)';
+            }, 2500);
+            setTimeout(() => {
+                wrapper.style.opacity = '0';
+                wrapper.style.visibility = 'hidden';
+                startFallingHearts();
+            }, 4500);
         }
 
         const weddingDate = new Date("Jan 1, 2027 12:30:00").getTime();
@@ -1123,57 +1145,93 @@
             const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
             const url = window.URL.createObjectURL(blob);
             const link = document.createElement('a');
-            link.href = url; link.setAttribute('download', info.ics_filename || 'Wong_Wang_Wedding.ics');
-            document.body.appendChild(link); link.click(); document.body.removeChild(link);
+            link.href = url;
+            link.setAttribute('download', info.ics_filename || 'Wong_Wang_Wedding.ics');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
+        // Form fields toggle logic (attendance & guest side)
+        function updateFormFields() {
+            const attendVal = document.querySelector('input[name="attend"]:checked')?.value;
+            const sideVal = document.querySelector('input[name="guestSide"]:checked')?.value;
+            
+            const isPureNo = (attendVal === 'no');
+            const isGroom = (sideVal === '新郎');
+            
+            // Attendance-dependent fields
+            const countGroup = document.getElementById('groupGuestCount');
+            const chairGroup = document.getElementById('groupBabyChair');
+            const vegGroup = document.getElementById('groupVegCount');
+            
+            if (countGroup) countGroup.style.display = isPureNo ? 'none' : 'block';
+            if (chairGroup) chairGroup.style.display = isPureNo ? 'none' : 'block';
+            if (vegGroup) vegGroup.style.display = isPureNo ? 'none' : 'block';
+            
+            if (isPureNo) {
+                const gc = document.getElementById('guestCount');
+                if (gc) gc.value = '不克出席';
+            } else {
+                const gc = document.getElementById('guestCount');
+                if (gc && gc.value === '不克出席') gc.value = '1';
+            }
+            
+            // Cake options & address: hidden if pure "no" OR if guestSide is "新郎"
+            const cakeGroup = document.getElementById('groupCakeOption');
+            const addrGroup = document.getElementById('groupShippingAddress');
+            
+            const hideCake = isPureNo || isGroom;
+            if (cakeGroup) cakeGroup.style.display = hideCake ? 'none' : 'block';
+            if (addrGroup) addrGroup.style.display = hideCake ? 'none' : 'block';
+        }
+
+        document.querySelectorAll('input[name="attend"], input[name="guestSide"]').forEach(input => {
+            input.addEventListener('change', updateFormFields);
+        });
+        updateFormFields();
+
         const GFORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfH796FmRpn7Lp9jUhXYuq9QTlyAgXndj-Qz74q6h0XD-F6Wg/formResponse';
-        
         document.getElementById('rsvpForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             const originalText = btn.textContent;
-            
             btn.disabled = true;
-            btn.textContent = '...'; 
-
+            btn.textContent = '...';
+            
             const attendElement = document.querySelector('input[name="attend"]:checked');
-            const attendVal = attendElement && attendElement.value === 'yes'
-                ? '確定出席（期待與您相見！）'
-                : '不克出席（心意收到，獻上祝福）';
-
+            let attendVal = '不克出席（心意收到，獻上祝福）';
+            if (attendElement) {
+                if (attendElement.value === 'yes') attendVal = '確定出席（期待與您相見！）';
+                else if (attendElement.value === 'no_gift') attendVal = '不克出席（禮到人不到）';
+                else attendVal = '不克出席（心意收到，獻上祝福）';
+            }
+            
             const sideElement = document.querySelector('input[name="guestSide"]:checked');
             const sideVal = sideElement ? sideElement.value : '';
-
+            
             const data = new FormData();
             data.append('entry.73737313', document.getElementById('guestName').value);
             data.append('entry.6119867', document.getElementById('contactInfo').value);
             if (sideVal) data.append('entry.1887028711', sideVal);
             data.append('entry.20838711', attendVal);
             data.append('entry.1130466163', document.getElementById('guestCount').value);
-            
             const veg = document.getElementById('vegCount').value;
             if (veg) data.append('entry.2064755464', veg);
-            
             const chair = document.getElementById('babyChair').value;
             if (chair) data.append('entry.630533526', chair);
-            
             if (document.getElementById('kinmenCheck').checked) {
                 data.append('entry.1934793535', '我要觀禮');
             }
-            
             const cake = document.getElementById('cakeOption').value;
             if (cake) data.append('entry.2126394216', cake);
-            
             const address = document.getElementById('shippingAddress').value;
             if (address) data.append('entry.1728641339', address);
-            
             const other = document.getElementById('otherNeed').value;
             if (other) data.append('entry.640859644', other);
-            
             const msg = document.getElementById('wishesMsg').value;
             if (msg) data.append('entry.1497153824', msg);
-
+            
             fetch(GFORM_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -1187,11 +1245,6 @@
                 btn.textContent = originalText;
             });
         });
-
-        document.querySelectorAll('input[name="guestSide"]').forEach(radio => {
-            radio.addEventListener('change', updateCakeOptionVisibility);
-        });
-        updateCakeOptionVisibility();
     </script>
 </body>
 </html>
